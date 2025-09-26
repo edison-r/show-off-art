@@ -10,7 +10,9 @@
   --color-background: var(--blue-grey);
   --color-foreground: var(--foreground);
 
-  --font-sans: var(--font-inter-sans);
+  --font-inter-sans: var(--font-inter-sans);
+  --font-grotesk: var(--font-grotesk);
+  --font-mono: var(--font-mono);
 
   --color-ring: var(--ring);
   --color-input: var(--input);
@@ -70,12 +72,11 @@
    VARIABLES DE BASE (modo claro)
    ================================ */
 :root {
-  /* Tu paleta OKLCH */
   --blue: oklch(0.5738 0.207 262.14);
   --blue-grey: oklch(0.9082 0.0112 123.47);
   --blue-grey-ghost: oklch(0.9082 0.0112 123.47 / 20%);
-  --footer: oklch(0.2134 0 0);           /* muy oscuro */
-  --footer-grey: oklch(0.957 0.0134 97.44); /* muy claro */
+  --footer: oklch(0.2134 0 0);         
+  --footer-grey: oklch(0.957 0.0134 97.44);
   --olive: oklch(0.3237 0.0292 118.82);
   --olive-cream: oklch(0.9549 0.0273 83.54);
   --superblue: oklch(0.3237 0.0292 118.82);
@@ -85,11 +86,10 @@
   --fire: oklch(0.652 0.236081 33.728);
   --fire-cream: oklch(0.953 0.0266 80.25);
 
-  /* Tipografías (ajusta si usas @next/font) */
-  --font-geist-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --font-geist-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-inter-sans: "Inter", sans-serif;
+  --font-grotesk: "Space Grotesk", sans-serif;
+  --font-mono: "PT Mono", monospace;
 
-  /* Tokens UI derivados de tu paleta (modo claro) */
   --foreground: var(--footer);        
   --border: oklch(0.86 0.005 120);      
   --input: oklch(0.96 0.006 120);

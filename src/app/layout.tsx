@@ -1,10 +1,21 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Space_Grotesk, PT_Mono } from "next/font/google";
 import "./globals.css";
 
 const interSans = Inter({
-  variable: "--font-inter-sans",
   subsets: ["latin"],
+  variable: "--font-inter-sans",
+});
+
+const grotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-grotesk",
+});
+
+const mono = PT_Mono({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
@@ -20,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${interSans.variable} antialiased`}
+        className={`${interSans.variable} ${grotesk.variable} ${mono.variable}`}
       >
         {children}
       </body>
