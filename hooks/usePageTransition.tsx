@@ -97,7 +97,7 @@ export function usePageTransition() {
         setTimeout(() => {
             overlay.style.opacity = '0';
             callback();
-        }, duration * 0.6);
+        }, duration * 0.5);
         
         // Fase 4: Abrir cortina para revelar nueva página
         setTimeout(() => {

@@ -112,7 +112,7 @@ export default function ContactPage() {
                                 onClick={() => navigateWithTransition('/', { 
                                     direction: 'right', 
                                     color: 'black',
-                                    duration: 1000
+                                    duration: 1600
                                 })}
                                 className="px-8 py-4 border border-yellow-600 text-yellow-600 rounded-lg hover:bg-yellow-50 transition-colors font-semibold"
                             >

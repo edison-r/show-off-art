@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import SplashScreen from "@/components/SplashScreen";
 import { useSplashControl } from "../../hooks/useSplashControl";
@@ -15,11 +15,19 @@ import Footer from "@/components/Footer";
 
 export default function HomePage() {
   const [doParallax, setDoParallax] = useState(false);
-  const { shouldShowSplash, markSplashAsSeen} = useSplashControl();
+  const { shouldShowSplash, isChecking, markSplashAsSeen} = useSplashControl();
 
   const initialY = shouldShowSplash ? -100 : 0;
   const animateY = shouldShowSplash ? (doParallax ? 0 : -100) : 0;
-  
+
+  if (isChecking) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin opacity-50"></div>
+      </div>
+    );
+  }
+
   return (
     <div className="relative min-h-screen overflow-hidden">
       <main>

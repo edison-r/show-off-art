@@ -63,7 +63,7 @@ export default function WorkPage() {
                                     onClick={() => navigateWithTransition('/', { 
                                         direction: 'left', 
                                         color: 'black',
-                                        duration: 1000
+                                        duration: 1600
                                     })}
                                     className="px-8 py-4 border border-purple-600 text-purple-600 rounded-lg hover:bg-purple-50 transition-colors font-semibold"
                                 >
