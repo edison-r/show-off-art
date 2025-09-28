@@ -1,0 +1,40 @@
+import ParallaxItem from "./ParallaxItem";
+
+export default function Impact() {
+  return (
+    <section id="about" className="mx-auto md:px-16 xl:px-24 px-4  py-16">
+      <h2 className="relative z-10 font-titles font-extrabold text-[8vw] leading-[0.75] text-blue select-none mt-24 ml-6">
+        LASTING FIRST<br/>IMPRESSIONS.
+      </h2>
+
+      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="pointer-events-none relative h-[40vw] md:h-[24vw]">
+            <ParallaxItem
+              src="/rand1.jpg"
+              alt="random image"
+              speed={-1}
+              className="absolute z-20 left-[0vw] top-[0vw] w-[20vw] aspect-[3/4] overflow-hidden"
+            />
+            <ParallaxItem
+              src="/rand2.jpg"
+              alt="random image"
+              speed={-2}
+              className="absolute z-20 left-[10vw] top-[15vw] w-[20vw] aspect-[3/4] overflow-hidden"
+            />
+        </div>
+
+        <div className="mb-14 text-xl md:text-2xl font-light leading-tight text-blue">
+          <p>
+            That’s why our platform focuses on delivering beautiful, accessible, and professional portfolios that leave a mark.
+          </p><br></br>
+          <p>
+            From sleek templates to intuitive customization, we give creators everything they need to go from concept to showcase.
+          </p><br></br>
+          <p>
+            Behind the product is a team of designers, developers, and creators who believe in empowering artists to be seen, shared, and celebrated.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}

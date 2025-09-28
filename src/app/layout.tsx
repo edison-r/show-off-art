@@ -1,10 +1,21 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Chivo_Mono, PT_Mono } from "next/font/google";
 import "./globals.css";
 
-const interSans = Inter({
-  variable: "--font-inter-sans",
+const sans = Inter({
   subsets: ["latin"],
+  variable: "--font-sans",
+});
+
+const titles = Chivo_Mono({
+  subsets: ["latin"],
+  variable: "--font-titles",
+});
+
+const mono = PT_Mono({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
@@ -20,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${interSans.variable} antialiased`}
+        className={`${sans.variable} ${titles.variable} ${mono.variable}`}
       >
         {children}
       </body>
