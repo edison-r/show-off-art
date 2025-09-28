@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Contact() {
   return (
     <section id="contact" className="bg-neutral-900 text-neutral-50">
-      <div className="mx-auto max-w-6xl px-4 py-16">
+      <div className="mx-auto py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
           <div className="md:col-span-2">
             <h3 className="font-grotesk text-6xl md:text-7xl">SAY HI!</h3>

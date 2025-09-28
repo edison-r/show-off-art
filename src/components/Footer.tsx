@@ -9,9 +9,9 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-neutral-200 bg-neutral-100">
-      <div className="mx-auto max-w-6xl px-4 py-6 flex flex-col md:flex-row items-center md:items-start justify-between gap-4">
-        <ul className="flex flex-wrap gap-4 text-sm text-neutral-600">
+    <footer className="bg-neutral-900">
+      <div className="mx-auto py-6 flex flex-col md:flex-row items-center md:items-start justify-between gap-4">
+        <ul className="flex flex-wrap gap-4 text-sm text-neutral-50">
           {socials.map(s => (
             <li key={s.label}>
               <Link href={s.href} className="hover:underline">{s.label}</Link>
@@ -21,7 +21,7 @@ export default function Footer() {
           <li><Link href="#" className="hover:underline">Cookies</Link></li>
         </ul>
 
-        <p className="text-xs text-neutral-500">
+        <p className="text-xs text-neutral-50">
           show-off — {new Date().getFullYear()}
         </p>
       </div>

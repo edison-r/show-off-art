@@ -93,11 +93,11 @@ export default function SplashScreen({
           onFinish();
         }
       }}
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-blue-grey"
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-blue-gray"
       style={{ willChange: "transform" }}
     >
-      <div className="relative z-10 px-6 text-center text-blue">
-        <div className="text-2xl md:text-4xl font-medium tracking-tight leading-tight">
+      <div className="relative z-40 px-6 text-center text-blue">
+        <div className="z-40 text-2xl md:text-4xl font-medium tracking-tight leading-tight">
           <span className="font-bold">
             designed <span className="font-light">by </span>artists,
           </span>

@@ -29,8 +29,8 @@ export default function HomePage() {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      <main>
+    <div className="min-h-screen">
+      <main className="md:px-16 xl:px-24 px-4">
         <Header />
         <motion.div
           className="min-h-screen bg-background text-foreground items-center justify-center transform-gpu"

@@ -1,27 +1,46 @@
+// app/components/Hero.tsx
+"use client";
+
 import Image from "next/image";
+import ParallaxItem from "./ParallaxItem";
 
 export default function Hero() {
   return (
     <section className="relative overflow-hidden">
-      <div className="mx-auto max-w-6xl px-4 pt-10">
-        <p className="font-inter-sans font-extralight text-lg text-blue">Showcasing creativity has never been easier.</p>
+      <div className="mx-auto px-4 pt-10">
+        <p className="font-extralight text-lg text-blue">
+          Showcasing creativity has never been easier.
+        </p>
 
-        <h1 className="mt-6 font-grotesk font-extrabold text-6xl md:text-[200px] leading-[0.85] tracking-tight text-blue">
-          WELCOME<br/>ARTISTS.
-        </h1>
-
-        <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div className="relative aspect-[3/4] bg-neutral-200">
-            <Image src="/hero1.jpg" alt="preview 1" fill className="object-cover" />
-          </div>
-          <div className="relative aspect-[3/4] bg-neutral-200">
-            <Image src="/hero2.jpg" alt="preview 2" fill className="object-cover" />
-          </div>
-          <div className="relative aspect-[3/4] bg-neutral-200">
-            <Image src="/hero3.jpg" alt="preview 3" fill className="object-cover" />
-          </div>
-          <div className="relative aspect-[3/4] bg-neutral-200">
-            <Image src="/hero4.jpg" alt="preview 4" fill className="object-cover" />
+        <div className="relative mt-10">
+          <h1 className="relative z-10 font-titles font-extrabold text-[16vw] leading-[0.75] text-blue select-none mt-48">
+            WELCOME<br />ARTISTS
+          </h1>
+          <div className="pointer-events-none relative h-[40vw] md:h-[24vw]">
+            <ParallaxItem
+              src="/hero1.jpg"
+              alt="preview 1"
+              speed={-2}
+              className="absolute z-20 left-[10vw] top-[-2vw] w-[20vw] aspect-[3/4] overflow-hidden"
+            />
+            <ParallaxItem
+              src="/hero2.jpg"
+              alt="preview 1"
+              speed={-4}
+              className="absolute z-20 left-[65vw] top-[-18vw] w-[22vw] aspect-[3/4] overflow-hidden"
+            />
+            <ParallaxItem
+              src="/hero4.jpg"
+              alt="preview 1"
+              speed={-1}
+              className="absolute z-0 right-[35vw] top-[-5vw] w-[15vw] aspect-[3/4] overflow-hidden"
+            />
+            <ParallaxItem
+              src="/hero3.jpg"
+              alt="preview 1"
+              speed={0}
+              className="absolute left-[0vw] top-[-35vw] w-[15vw] aspect-[3/4] overflow-hidden"
+            />
           </div>
         </div>
       </div>

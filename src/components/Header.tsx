@@ -1,13 +1,13 @@
-// Header.tsx - FINAL CON TODAS LAS NAVEGACIONES
 "use client";
+
 import { useNavigationHelper } from "../../hooks/useNavigationHelper";
 
 export default function Header() {
     const { navigateWithTransition } = useNavigationHelper();
 
     return (
-        <header className="sticky top-0 z-40 bg-transparent backdrop-blur border-b border-blue-grey-ghost">
-            <div className="text-blue mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+        <header className="sticky w-full z-40 top-0 start-0 border-b border-blue/50 backdrop-blur-md transition-all duration-300">
+            <div className="text-blue font-mono font-extralight mx-auto py-3 flex items-center justify-between">
                 <button 
                     onClick={() => navigateWithTransition('/', { 
                         direction: 'down', 
@@ -16,7 +16,7 @@ export default function Header() {
                     })}
                     className="flex items-center gap-2 hover:opacity-80 transition-opacity"
                 >
-                    <span className="inline-flex h-6 w-6 items-center justify-center rounded bg-blue-600 text-white font-mono text-xs">S</span>
+                    <span className="inline-flex h-6 w-6 items-center justify-center rounded bg-blue-600 text-white font-grotesk text-xs">S</span>
                     <span className="font-grotesk tracking-wide">show-off</span>
                 </button>
                 
@@ -27,7 +27,7 @@ export default function Header() {
                             color: 'purple',
                             duration: 1000
                         })}
-                        className="hover:underline"
+                        className="hover:underline cursor-pointer"
                     >
                         Work
                     </button>
@@ -37,7 +37,7 @@ export default function Header() {
                             color: 'blue',
                             duration: 1000
                         })}
-                        className="hover:underline"
+                        className="hover:underline cursor-pointer"
                     >
                         About
                     </button>
@@ -47,7 +47,7 @@ export default function Header() {
                             color: 'yellow',
                             duration: 1000
                         })}
-                        className="hover:underline"
+                        className="hover:underline cursor-pointer"
                     >
                         Contact
                     </button>
@@ -59,7 +59,7 @@ export default function Header() {
                         color: 'green',
                         duration: 1000
                     })}
-                    className="inline-flex items-center gap-2 rounded-md border border-neutral-300 px-3 py-1.5 text-sm hover:bg-neutral-200"
+                    className="inline-flex cursor-pointer items-center gap-2 rounded-md border border-neutral-300 px-3 py-1.5 text-sm hover:bg-neutral-200"
                 >
                     join us
                 </button>

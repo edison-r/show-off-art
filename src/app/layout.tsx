@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk, PT_Mono } from "next/font/google";
+import { Inter, Chivo_Mono, PT_Mono } from "next/font/google";
 import "./globals.css";
 
-const interSans = Inter({
+const sans = Inter({
   subsets: ["latin"],
-  variable: "--font-inter-sans",
+  variable: "--font-sans",
 });
 
-const grotesk = Space_Grotesk({
+const titles = Chivo_Mono({
   subsets: ["latin"],
-  variable: "--font-grotesk",
+  variable: "--font-titles",
 });
 
 const mono = PT_Mono({
@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${interSans.variable} ${grotesk.variable} ${mono.variable}`}
+        className={`${sans.variable} ${titles.variable} ${mono.variable}`}
       >
         {children}
       </body>

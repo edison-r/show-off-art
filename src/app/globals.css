@@ -3,15 +3,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ================================
-   TOKENS TAILWIND (funcionales)
-   ================================ */
 @theme inline {
-  --color-background: var(--blue-grey);
+  --color-background: var(--blue-gray);
   --color-foreground: var(--foreground);
 
-  --font-inter-sans: var(--font-inter-sans);
-  --font-grotesk: var(--font-grotesk);
+  --font-sans: var(--font-sans);
+  --font-titles: var(--font-titles);
   --font-mono: var(--font-mono);
 
   --color-ring: var(--ring);
@@ -47,47 +44,39 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 }
-
-/* ================================
-   PALETA PERSONAL (utilities)
-   -> bg-blue, text-fire, etc.
-   ================================ */
 @theme {
   --color-blue: var(--blue);
-  --color-blue-grey: var(--blue-grey);
-  --color-blue-grey-ghost: var(--blue-grey-ghost);
+  --color-blue-gray: var(--blue-gray);
+  --color-blue-gray-ghost: var(--blue-gray-ghost);
   --color-footer: var(--footer);
-  --color-footer-grey: var(--footer-grey);
+  --color-footer-gray: var(--footer-gray);
   --color-olive: var(--olive);
   --color-olive-cream: var(--olive-cream);
   --color-superblue: var(--superblue);
-  --color-superblue-grey: var(--superblue-grey);
+  --color-superblue-gray: var(--superblue-gray);
   --color-apple: var(--apple);
   --color-apple-cream: var(--apple-cream);
   --color-fire: var(--fire);
   --color-fire-cream: var(--fire-cream);
 }
 
-/* ================================
-   VARIABLES DE BASE (modo claro)
-   ================================ */
 :root {
   --blue: oklch(0.5738 0.207 262.14);
-  --blue-grey: oklch(0.9082 0.0112 123.47);
-  --blue-grey-ghost: oklch(0.9082 0.0112 123.47 / 20%);
+  --blue-gray: oklch(0.9082 0.0112 123.47);
+  --blue-gray-ghost: oklch(0.9082 0.0112 123.47 / 20%);
   --footer: oklch(0.2134 0 0);         
-  --footer-grey: oklch(0.957 0.0134 97.44);
+  --footer-gray: oklch(0.957 0.0134 97.44);
   --olive: oklch(0.3237 0.0292 118.82);
   --olive-cream: oklch(0.9549 0.0273 83.54);
   --superblue: oklch(0.3237 0.0292 118.82);
-  --superblue-grey: oklch(0.8922 0.0011 17.18);
+  --superblue-gray: oklch(0.8922 0.0011 17.18);
   --apple: oklch(0.5536 0.0967 134.48);
   --apple-cream: oklch(0.9575 0.0149 94.2);
   --fire: oklch(0.652 0.236081 33.728);
   --fire-cream: oklch(0.953 0.0266 80.25);
 
-  --font-inter-sans: "Inter", sans-serif;
-  --font-grotesk: "Space Grotesk", sans-serif;
+  --font-sans: "Inter", sans-serif;
+  --font-titles: "Chivo Mono", sans-serif;
   --font-mono: "PT Mono", monospace;
 
   --foreground: var(--footer);        
@@ -102,18 +91,18 @@
   --popover-foreground: var(--foreground);
 
   --primary: var(--blue);                
-  --secondary: var(--superblue-grey);   
+  --secondary: var(--superblue-gray);   
   --secondary-foreground: var(--footer);
 
   --accent: var(--olive-cream);
   --accent-foreground: var(--footer);
 
-  --muted: var(--blue-grey-ghost);
+  --muted: var(--blue-gray-ghost);
   --muted-foreground: oklch(0.40 0.01 120);
 
   --destructive: var(--fire);
 
-  --sidebar: var(--blue-grey);
+  --sidebar: var(--blue-gray);
   --sidebar-foreground: var(--footer);
   --sidebar-primary: var(--blue);
   --sidebar-primary-foreground: var(--fire-cream);
@@ -125,22 +114,13 @@
   --radius: 12px;
 }
 
-/* ================================
-   MODO OSCURO (por clase .dark)
-   ================================ */
 :root.dark {
-  --foreground: var(--footer-grey);
+  --foreground: var(--footer-gray);
   --border: oklch(0.35 0.01 120);
   --input: oklch(0.30 0.01 120);
   --ring: oklch(0.78 0.07 260);
 
-  /* Fondo general: usa tu negro "footer" */
-  --color-background: var(--footer);     /* Nota: mapea en @theme inline si quieres usarlo directo */
-  /* Mantén la API: bg-background ya usa var(--blue-grey) por defecto en @theme inline.
-     Si quieres que bg-background cambie en dark sin usar 'dark:bg-*',
-     añade esta línea también en @theme inline dentro de una @variant dark.
-     Alternativamente, define aquí una variable puente: */
-  /* Tip útil: si prefieres, en layout usa class="dark:bg-footer" para forzar. */
+  --color-background: var(--footer);
 
   --card: oklch(0.24 0.005 120);
   --card-foreground: var(--foreground);
@@ -150,10 +130,10 @@
 
   --primary: oklch(0.65 0.18 262); 
   --secondary: oklch(0.32 0.01 120);
-  --secondary-foreground: var(--footer-grey);
+  --secondary-foreground: var(--footer-gray);
 
   --accent: oklch(0.34 0.03 118.82);
-  --accent-foreground: var(--footer-grey);
+  --accent-foreground: var(--footer-gray);
 
   --muted: oklch(0.26 0.01 120);
   --muted-foreground: oklch(0.80 0.01 120);
@@ -161,18 +141,15 @@
   --destructive: oklch(0.62 0.22 33.7);
 
   --sidebar: oklch(0.22 0.005 120);
-  --sidebar-foreground: var(--footer-grey);
+  --sidebar-foreground: var(--footer-gray);
   --sidebar-primary: oklch(0.68 0.20 262);
   --sidebar-primary-foreground: var(--fire-cream);
   --sidebar-accent: oklch(0.30 0.025 118.82);
-  --sidebar-accent-foreground: var(--footer-grey);
+  --sidebar-accent-foreground: var(--footer-gray);
   --sidebar-border: var(--border);
   --sidebar-ring: var(--ring);
 }
 
-/* ================================
-   BASE LAYERS
-   ================================ */
 @layer base {
   * {
     @apply border-border outline-ring/50;
