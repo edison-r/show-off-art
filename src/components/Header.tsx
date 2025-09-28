@@ -6,7 +6,7 @@ export default function Header() {
     const { navigateWithTransition } = useNavigationHelper();
 
     return (
-        <header className="sticky w-full z-40 top-0 start-0 border-b border-blue/50 backdrop-blur-md transition-all duration-300">
+        <header className="sticky w-full md:px-16 xl:px-24 px-4 z-40 top-0 start-0 border-b border-blue/50 backdrop-blur-md">
             <div className="text-blue font-mono font-extralight mx-auto py-3 flex items-center justify-between">
                 <button 
                     onClick={() => navigateWithTransition('/', { 

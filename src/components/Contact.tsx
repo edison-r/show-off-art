@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Contact() {
   return (
-    <section id="contact" className="bg-neutral-900 text-neutral-50">
+    <section id="contact" className="md:px-16 xl:px-24 px-4 mt-48 bg-neutral-900 text-neutral-50">
       <div className="mx-auto py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
           <div className="md:col-span-2">

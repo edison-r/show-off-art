@@ -9,7 +9,7 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="bg-neutral-900">
+    <footer className="md:px-16 xl:px-24 px-4 bg-neutral-900">
       <div className="mx-auto py-6 flex flex-col md:flex-row items-center md:items-start justify-between gap-4">
         <ul className="flex flex-wrap gap-4 text-sm text-neutral-50">
           {socials.map(s => (

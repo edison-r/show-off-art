@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Templates() {
   return (
-    <section id="work" className="mx-auto py-10">
+    <section id="work" className="mx-auto py-10 md:px-16 xl:px-24 px-4 ">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         {["tpl1.jpg", "tpl2.jpg", "tpl3.jpg", "tpl4.jpg"].map((src, i) => (
           <article key={i} className="relative bg-white border border-neutral-200 shadow-sm">

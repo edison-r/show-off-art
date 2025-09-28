@@ -7,7 +7,6 @@ import { useSplashControl } from "../../hooks/useSplashControl";
 
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Intro from "@/components/Intro";
 import Templates from "@/components/Templates";
 import Impact from "@/components/Impact";
 import Contact from "@/components/Contact";
@@ -30,7 +29,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen">
-      <main className="md:px-16 xl:px-24 px-4">
+      <main>
         <Header />
         <motion.div
           className="min-h-screen bg-background text-foreground items-center justify-center transform-gpu"
@@ -39,7 +38,6 @@ export default function HomePage() {
           transition={{ duration: shouldShowSplash ? 1.3 : 0, ease: [0.22, 1, 0.36, 1] }}
         >
           <Hero />
-          <Intro />
           <Templates />
           <Impact />
           <Contact />
