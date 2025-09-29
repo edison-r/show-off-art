@@ -19,7 +19,7 @@ export default function ClientsSection(){
                 Our style blends minimal design with bold personality, 
                 creating spaces where your work takes center stage. 
                 Every template is built with clarity, creativity, and impact 
-                in mind—so your art speaks louder than words."
+                in mind—so your art speaks louder than words.
                 </p>
             </div>
         </div>
