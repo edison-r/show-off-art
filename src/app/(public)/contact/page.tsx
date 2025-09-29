@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react";
-import { useNavigationHelper } from '../../../hooks/useNavigationHelper';
-import Header from "@/components/Header";
+import { useNavigationHelper } from '../../../../hooks/useNavigationHelper';
+import Header from "../../components/Header";
 import { PageWrapper } from "../../components/PageWrapper";
 
 export default function ContactPage() {
