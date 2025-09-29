@@ -25,7 +25,7 @@ export default function ParallaxItem({
 
     return (
         <motion.div ref={ref} style={{ y }} className={className}>
-        <div className="relative w-full h-full rounded overflow-hidden">
+        <div className="relative w-full h-full overflow-hidden">
             <Image src={src} alt={alt} fill className="object-cover" />
         </div>
         </motion.div>

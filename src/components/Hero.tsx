@@ -4,9 +4,9 @@ import ParallaxItem from "./ParallaxItem";
 
 export default function Hero() {
   return (
-    <section className="relative md:px-16 xl:px-24 px-4 overflow-visible">
+    <section className="relative py-8 md:px-16 xl:px-24 px-4 overflow-visible">
       <div className="mx-auto px-4 pt-10">
-        <p className="relative z-20 font-light text-xl text-blue">
+        <p className="relative z-20 font-mono font-light text-lg">
           Showcasing creativity has never been easier.
         </p>
 
