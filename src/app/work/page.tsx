@@ -1,14 +1,12 @@
 "use client"
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { useNavigationHelper } from '../../../hooks/useNavigationHelper';
 import Header from "@/components/Header";
 import { PageWrapper } from "../../components/PageWrapper";
 
 export default function WorkPage() {
     const { navigateWithTransition } = useNavigationHelper();
-    const [doParallax, setDoParallax] = useState(true);
 
     const projects = [
         { id: 1, title: "Brand Identity Design", category: "Branding", color: "bg-purple-100", textColor: "text-purple-800" },

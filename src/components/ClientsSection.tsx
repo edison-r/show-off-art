@@ -12,14 +12,14 @@ export default function ClientsSection(){
                 <p>
                 Our mission is simple: to empower artists with the tools to showcase
                 their talent in the most authentic way. 
-                We believe portfolios should be more than just galleries—they 
+                We believe portfolios should be more than just galleries, they 
                 should tell stories, spark connections, and open doors.
                 </p>
                 <p>
                 Our style blends minimal design with bold personality, 
                 creating spaces where your work takes center stage. 
                 Every template is built with clarity, creativity, and impact 
-                in mind—so your art speaks louder than words.
+                in mind, so your art speaks louder than words.
                 </p>
             </div>
         </div>

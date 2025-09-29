@@ -1,14 +1,12 @@
 "use client"
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { useNavigationHelper } from '../../../hooks/useNavigationHelper';
 import Header from "@/components/Header";
 import { PageWrapper } from "../../components/PageWrapper";
 
 export default function AboutPage() {
     const { navigateWithTransition } = useNavigationHelper();
-    const [doParallax, setDoParallax] = useState(true); 
 
     return (
         <div className="relative min-h-screen overflow-hidden">
