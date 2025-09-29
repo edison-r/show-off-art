@@ -8,7 +8,7 @@ export default async function PrivateLayout({ children }: { children: ReactNode 
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
     {
       cookies: {
         getAll() { return cookieStore.getAll(); }
@@ -17,7 +17,7 @@ export default async function PrivateLayout({ children }: { children: ReactNode 
   );
 
   const { data: { user } } = await supabase.auth.getUser();
-  if (!user) redirect("/join"); // o "/login" si tienes esa ruta
+  if (!user) redirect("/join");
 
   return <>{children}</>;
 }
