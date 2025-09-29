@@ -138,7 +138,7 @@ const Templates = forwardRef<HTMLElement>(function Templates(_, ref) {
   return (
     <section ref={ref} id="work" className="py-8 overflow-hidden">
       <div className="mx-auto mb-2 md:px-16 xl:px-24 mt-6">
-        <div className="flex items-center gap-2 text-neutral-400 text-sm">
+        <div className="flex items-center gap-2 font-mono text-sm">
           <span>Scroll horizontally or drag</span>
           <svg className="w-4 h-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
