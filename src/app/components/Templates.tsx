@@ -26,16 +26,10 @@ const Templates = forwardRef<HTMLElement>(function Templates(_, ref) {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsInView(entry.isIntersecting);
-      },
+      ([entry]) => setIsInView(entry.isIntersecting),
       { threshold: 0.1 }
     );
-
-    if (scrollRef.current) {
-      observer.observe(scrollRef.current);
-    }
-
+    if (scrollRef.current) observer.observe(scrollRef.current);
     return () => observer.disconnect();
   }, []);
 
@@ -43,34 +37,27 @@ const Templates = forwardRef<HTMLElement>(function Templates(_, ref) {
     if (scrollRef.current) {
       const container = scrollRef.current;
       const cardWidth = 320 + 24;
-      const middlePosition = templates.length * cardWidth;
-      container.scrollLeft = middlePosition;
+      container.scrollLeft = templates.length * cardWidth;
     }
   }, []);
 
   useEffect(() => {
     if (!isInView || isPaused || isDragging) return;
-
     const container = scrollRef.current;
     if (!container) return;
 
     const scroll = () => {
       const cardWidth = 320 + 24;
       const totalWidth = templates.length * cardWidth;
-      
       container.scrollLeft += 1;
-
       if (container.scrollLeft >= totalWidth * 2) {
         container.scrollLeft = totalWidth;
       }
     };
 
     autoScrollRef.current = setInterval(scroll, 50);
-
     return () => {
-      if (autoScrollRef.current) {
-        clearInterval(autoScrollRef.current);
-      }
+      if (autoScrollRef.current) clearInterval(autoScrollRef.current);
     };
   }, [isInView, isPaused, isDragging]);
 
@@ -86,8 +73,7 @@ const Templates = forwardRef<HTMLElement>(function Templates(_, ref) {
 
       if (currentScroll <= cardWidth) {
         container.scrollLeft = totalWidth + cardWidth;
-      }
-      else if (currentScroll >= maxScroll - cardWidth) {
+      } else if (currentScroll >= maxScroll - cardWidth) {
         container.scrollLeft = totalWidth - cardWidth;
       }
     };
@@ -101,14 +87,12 @@ const Templates = forwardRef<HTMLElement>(function Templates(_, ref) {
     setIsPaused(false);
     setIsDragging(false);
   };
-
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true);
     setIsPaused(true);
     setStartX(e.pageX - (scrollRef.current?.offsetLeft || 0));
     setScrollLeft(scrollRef.current?.scrollLeft || 0);
   };
-
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging) return;
     e.preventDefault();
@@ -118,15 +102,12 @@ const Templates = forwardRef<HTMLElement>(function Templates(_, ref) {
       scrollRef.current.scrollLeft = scrollLeft - walk;
     }
   };
-
   const handleMouseUp = () => {
     setIsDragging(false);
     setTimeout(() => setIsPaused(false), 1000);
   };
-
   const handleTouchStart = () => setIsPaused(true);
   const handleTouchEnd = () => setTimeout(() => setIsPaused(false), 1000);
-
   const handleTemplateClick = (templateId: number) => {
     navigateWithTransition(`/template/${templateId}`, {
       direction: 'left',
@@ -136,11 +117,11 @@ const Templates = forwardRef<HTMLElement>(function Templates(_, ref) {
   };
 
   return (
-    <section ref={ref} id="work" className="py-8 overflow-hidden">
-      <div className="mx-auto mb-2 md:px-16 xl:px-24 mt-6">
-        <div className="flex items-center gap-2 font-mono text-sm">
+    <section ref={ref} id="work" className="py-6 sm:py-8 overflow-hidden">
+      <div className="mx-auto mb-2 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 mt-4 sm:mt-6">
+        <div className="flex items-center gap-2 font-mono text-xs sm:text-sm">
           <span>Scroll horizontally or drag</span>
-          <svg className="w-4 h-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-3 h-3 sm:w-4 sm:h-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
           </svg>
         </div>
@@ -155,19 +136,16 @@ const Templates = forwardRef<HTMLElement>(function Templates(_, ref) {
         onMouseUp={handleMouseUp}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
-        className={`flex gap-6 overflow-x-auto scrollbar-hide pl-4 md:pl-16 xl:pl-24 pr-4 ${
+        className={`flex gap-4 sm:gap-6 overflow-x-auto scrollbar-hide pl-4 sm:pl-6 md:pl-12 lg:pl-16 xl:pl-24 pr-4 sm:pr-6 ${
           isDragging ? 'cursor-grabbing' : 'cursor-grab'
         }`}
-        style={{
-          scrollbarWidth: 'none',
-          msOverflowStyle: 'none',
-        }}
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {infiniteTemplates.map((template, i) => (
           <article
             key={`${template.id}-${i}`}
             onClick={() => handleTemplateClick(template.id)}
-            className="flex-shrink-0 w-[500px] md:w-[550px] bg-white border border-neutral-200 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group"
+            className="flex-shrink-0 w-[280px] sm:w-[350px] md:w-[450px] lg:w-[500px] xl:w-[550px] bg-white border border-neutral-200 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group"
           >
             <div className="relative aspect-[3/4] overflow-hidden">
               <Image
