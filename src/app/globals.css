@@ -61,6 +61,9 @@
 }
 
 :root {
+  --bg: oklch(0.9082 0.0112 123.47);
+  --fg: oklch(0.5738 0.207 262.14);
+
   --blue: oklch(0.5738 0.207 262.14);
   --blue-gray: oklch(0.9082 0.0112 123.47);
   --blue-gray-ghost: oklch(0.9082 0.0112 123.47 / 20%);
@@ -150,11 +153,12 @@
   --sidebar-ring: var(--ring);
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+main[data-theme="color"] {
+  --bg: var(--blue);
+  --fg: var(--blue-gray);
+}
+
+main[data-theme="footer"]{
+  --bg: var(--footer);
+  --fg: var(--footer-gray);
 }

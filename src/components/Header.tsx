@@ -7,7 +7,7 @@ export default function Header() {
 
     return (
         <header className="sticky w-full md:px-16 xl:px-24 px-4 z-40 top-0 start-0 border-b border-blue/50 backdrop-blur-md">
-            <div className="text-blue font-mono font-extralight mx-auto py-3 flex items-center justify-between">
+            <div className="font-mono font-extralight mx-auto py-3 flex items-center justify-between">
                 <button 
                     onClick={() => navigateWithTransition('/', { 
                         direction: 'down', 
@@ -16,8 +16,8 @@ export default function Header() {
                     })}
                     className="flex items-center gap-2 hover:opacity-80 transition-opacity"
                 >
-                    <span className="inline-flex h-6 w-6 items-center justify-center rounded bg-blue-600 text-white font-grotesk text-xs">S</span>
-                    <span className="font-grotesk tracking-wide">show-off</span>
+                    <span className="inline-flex h-6 w-6 items-center justify-center rounded bg-blue-600 text-white font-titles text-xs">S</span>
+                    <span className="font-titles tracking-wide">show-off</span>
                 </button>
                 
                 <nav className="hidden md:flex items-center gap-6 text-sm">

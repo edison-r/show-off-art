@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, forwardRef} from "react";
 import Image from "next/image";
 import { useNavigationHelper } from "../../hooks/useNavigationHelper";
 
@@ -11,7 +11,7 @@ const templates = [
   { id: 4, src: "tpl4.jpg", title: "Brand Showcase", description: "Perfect for showcasing your brand." },
 ];
 
-export default function Templates() {
+const Templates = forwardRef<HTMLElement>(function Templates(_, ref) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -136,7 +136,7 @@ export default function Templates() {
   };
 
   return (
-    <section id="work" className="py-8 overflow-hidden">
+    <section ref={ref} id="work" className="py-8 overflow-hidden">
       <div className="mx-auto mb-2 md:px-16 xl:px-24 mt-6">
         <div className="flex items-center gap-2 text-neutral-400 text-sm">
           <span>Scroll horizontally or drag</span>
@@ -189,4 +189,6 @@ export default function Templates() {
       `}</style>
     </section>
   );
-}
+});
+
+export default Templates;

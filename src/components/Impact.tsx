@@ -3,11 +3,11 @@ import ParallaxItem from "./ParallaxItem";
 export default function Impact() {
   return (
     <section id="about" className="relative mx-auto md:px-16 xl:px-24 px-4 py-8 overflow-visible">
-      <h2 className="relative z-10 font-titles font-extrabold text-[8vw] leading-[0.75] text-blue select-none mt-10 ml-6">
+      <h2 className="relative z-10 font-titles font-extrabold text-[8vw] leading-[0.75] select-none mt-10">
         LASTING FIRST<br/>IMPRESSIONS.
       </h2>
 
-      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="pointer-events-none">
             {/* <ParallaxItem
               src="/rand1.jpg"
@@ -22,7 +22,7 @@ export default function Impact() {
               className="absolute z-0 left-[10vw] top-[25vw] w-[20vw] aspect-[3/4] overflow-hidden"
             /> */}
           </div>
-        <div className="mt-24 text-lg md:text-xl font-light leading-tight text-blue">
+        <div className="mt-24 text-lg md:text-xl font-light leading-tight">
           <p>
             That’s why our platform focuses on delivering beautiful, accessible, and professional portfolios that leave a mark.
           </p><br></br>
