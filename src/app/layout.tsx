@@ -30,9 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${sans.variable} ${titles.variable} ${mono.variable}`}
-      >
+      <body className={`${sans.variable} ${titles.variable} ${mono.variable}`}>
         {children}
       </body>
     </html>
