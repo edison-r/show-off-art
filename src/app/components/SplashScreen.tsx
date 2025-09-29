@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useLockBodyScroll } from "../../../hooks/useLockBodyScroll"
+import { useLockBodyScroll } from "@/hooks/useLockBodyScroll"
 
 type SplashScreenProps = {
   onFinish: () => void;

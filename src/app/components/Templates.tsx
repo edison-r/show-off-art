@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState, forwardRef} from "react";
 import Image from "next/image";
-import { useNavigationHelper } from "../../../hooks/useNavigationHelper";
+import { useNavigationHelper } from "@/hooks/useNavigationHelper";
 
 const templates = [
   { id: 1, src: "tpl1.jpg", title: "Modern Portfolio", description: "Clean, flexible, and fast to customize." },

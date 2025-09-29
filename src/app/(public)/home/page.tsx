@@ -2,17 +2,17 @@
 
 import { useState, useRef, useMemo } from "react";
 import { useScroll, useMotionValueEvent, motion } from "framer-motion";
-import SplashScreen from "../../components/SplashScreen";
-import { useSplashControl } from "../../../../hooks/useSplashControl";
+import SplashScreen from "@app/components/SplashScreen";
+import { useSplashControl } from "@/hooks/useSplashControl";
 
-import Header from "../../components/Header";
-import Hero from "../../components/Hero";
-import Templates from "../../components/Templates";
-import ClientsSection from "../../components/ClientsSection";
-import VideoSection from "../../components/VideoSection";
-import Impact from "../../components/Impact";
-import Contact from "../../components/Contact";
-import Footer from "../../components/Footer";
+import Header from "@app/components/Header";
+import Hero from "@app/components/Hero";
+import Templates from "@app/components/Templates";
+import ClientsSection from "@app/components/ClientsSection";
+import VideoSection from "@app/components/VideoSection";
+import Impact from "@app/components/Impact";
+import Contact from "@app/components/Contact";
+import Footer from "@app/components/Footer";
 
 export default function HomePage() {
   const [doParallax, setDoParallax] = useState(false);

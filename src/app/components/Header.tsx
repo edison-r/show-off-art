@@ -1,6 +1,6 @@
 "use client";
 
-import { useNavigationHelper } from "../../../hooks/useNavigationHelper";
+import { useNavigationHelper } from "@/hooks/useNavigationHelper";
 
 export default function Header() {
     const { navigateWithTransition } = useNavigationHelper();
