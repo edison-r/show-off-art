@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigationHelper } from '../../../hooks/useNavigationHelper';
 import Header from "@/components/Header";
-import { PageWrapper } from "../../../hooks/PageWrapper";
+import { PageWrapper } from "../../components/PageWrapper";
 
 export default function WorkPage() {
     const { navigateWithTransition } = useNavigationHelper();
