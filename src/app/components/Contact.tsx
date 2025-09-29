@@ -12,7 +12,7 @@ export default function Contact() {
           <div className="space-y-3 sm:space-y-4 md:-mt-16">
             <h4 className="font-mono text-xs sm:text-sm md:text-md mb-6 sm:mb-8">Contact us</h4>
             <p className="font-light text-lg sm:text-xl">
-              {"Tell us about your project.<br />Let's collaborate and make great stuff."}
+              {"Tell us about your project."}<br />{"Let's collaborate and make great stuff."}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-12 md:gap-20 font-mono text-xs sm:text-sm pt-4">
