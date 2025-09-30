@@ -36,11 +36,20 @@ export default function Header() {
           })}
           className="flex items-center gap-2 hover:opacity-80 transition-opacity"
         >
-          <span className="inline-flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded bg-blue text-blue-gray font-titles text-xs">S</span>
-          <span className="font-titles tracking-wide text-sm sm:text-base">show-off</span>
+        <span className="font-titles tracking-wide text-sm sm:text-base">show-off</span>
         </button>
         
         <nav className="hidden md:flex items-center justify-between gap-4 lg:gap-6 text-xs sm:text-sm">
+          <button 
+            onClick={() => navigateWithTransition('/home', { 
+              direction: 'down', 
+              color: "var(--blue-gray)",
+              duration: 1200
+            })}
+            className="hover:underline cursor-pointer"
+          >
+            Home
+          </button>          
           <button 
             onClick={() => navigateWithTransition('/work', { 
               direction: 'down', 
