@@ -20,8 +20,8 @@ export default function WorkPage() {
             <main>
                 <Header />
                 <PageWrapper
-                    backgroundColor="purple"
-                    className="min-h-screen bg-purple-50 text-foreground transform-gpu"
+                    backgroundColor="var(--fire)"
+                    className="min-h-screen bg-fire text-foreground transform-gpu"
                 >
                     <div className="max-w-6xl mx-auto px-6 py-16">
                         <div className="text-center mb-16">
@@ -56,7 +56,7 @@ export default function WorkPage() {
                                     Ver todos los proyectos
                                 </button>
                                 <button 
-                                    onClick={() => navigateWithTransition('/', { 
+                                    onClick={() => navigateWithTransition('/home', { 
                                         direction: 'left', 
                                         color: 'black',
                                         duration: 1600

@@ -29,9 +29,9 @@ export default function Header() {
     <header className="sticky w-full px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 z-40 top-0 start-0 border-b border-blue-gray-ghost backdrop-blur-md">
       <div className="font-mono font-extralight mx-auto py-3 flex items-center justify-between">
         <button 
-          onClick={() => navigateWithTransition('/', { 
+          onClick={() => navigateWithTransition('/home', { 
             direction: 'down', 
-            color: 'black',
+            color: "var(--blue-gray)",
             duration: 1000 
           })}
           className="flex items-center gap-2 hover:opacity-80 transition-opacity"
@@ -44,8 +44,8 @@ export default function Header() {
           <button 
             onClick={() => navigateWithTransition('/work', { 
               direction: 'down', 
-              color: 'purple',
-              duration: 1000
+              color: "var(--fire)",
+              duration: 1200
             })}
             className="hover:underline cursor-pointer"
           >
@@ -54,8 +54,8 @@ export default function Header() {
           <button 
             onClick={() => navigateWithTransition('/about', { 
               direction: 'down', 
-              color: 'blue',
-              duration: 1000
+              color: "var(--apple)",
+              duration: 1200
             })}
             className="hover:underline cursor-pointer"
           >
@@ -64,8 +64,8 @@ export default function Header() {
           <button 
             onClick={() => navigateWithTransition('/contact', { 
               direction: 'down', 
-              color: 'yellow',
-              duration: 1000
+              color: "var(--superblue)",
+              duration: 1200
             })}
             className="hover:underline cursor-pointer"
           >
@@ -74,8 +74,8 @@ export default function Header() {
           <button
             onClick={() => navigateWithTransition('/join', { 
               direction: 'down', 
-              color: 'green',
-              duration: 1000
+              color: "var(--olive)",
+              duration: 1200
             })}
             className="ml-12 hover:underline cursor-pointer"
           >

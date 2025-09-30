@@ -68,10 +68,11 @@ export default function MobileMenuPortal({ open, onClose, go }: Props) {
                 </button>
 
                 {[
-                { label: "Work", path: "/work", color: "purple", delay: 0.05 },
-                { label: "About", path: "/about", color: "blue", delay: 0.1 },
-                { label: "Contact", path: "/contact", color: "yellow", delay: 0.15 },
-                { label: "Login", path: "/login", color: "green", delay: 0.15 },
+                { label: "Home", path: "/home", color: "var(--blue-gray)", delay: 0.05 },
+                { label: "Work", path: "/work", color: "var(--fire)", delay: 0.15 },
+                { label: "About", path: "/about", color: "var(--apple)", delay: 0.15 },
+                { label: "Contact", path: "/contact", color: "var(--superblue)", delay: 0.20 },
+                { label: "Login", path: "/login", color: "var(--olive)", delay: 0.25 },
                 ].map((item) => (
                 <motion.button
                     key={item.path}

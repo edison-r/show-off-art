@@ -25,13 +25,13 @@ export default function Hero() {
               src="/hero2.jpg"
               alt="preview 2"
               speed={-4}
-              className="absolute z-20 left-[60vw] sm:left-[65vw] top-[-15vw] sm:top-[-18vw] w-[26vw] sm:w-[22vw] aspect-[3/4] overflow-hidden"
+              className="absolute z-20 left-[70vw] sm:left-[65vw] top-[-15vw] sm:top-[-18vw] w-[26vw] sm:w-[22vw] aspect-[3/4] overflow-hidden"
             />
             <ParallaxItem
               src="/hero4.jpg"
               alt="preview 3"
               speed={-1}
-              className="absolute z-0 right-[30vw] sm:right-[35vw] top-[-30vw] sm:top-[-35vw] w-[18vw] sm:w-[15vw] aspect-[3/4] overflow-hidden"
+              className="absolute z-0 right-[30vw] sm:right-[35vw] top-[-35vw] sm:top-[-35vw] w-[18vw] sm:w-[15vw] aspect-[3/4] overflow-hidden"
             />
             <ParallaxItem
               src="/hero3.jpg"
