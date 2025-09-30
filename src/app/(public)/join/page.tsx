@@ -19,5 +19,20 @@ export default function JoinPage() {
 
   const signUpWithEmailPassword = async () => {
     await supabase.auth.signUp({ email, password, options: { emailRedirectTo: `${location.origin}/auth/callback` } })
+    alert("Check your email to finish sign-up.");
   }
+
+    return (
+    <main className="grid place-items-center min-h-[80dvh] p-6">
+      <div className="w-full max-w-sm space-y-4">
+        <h1 className="text-2xl font-semibold">Sign up</h1>
+        <form onSubmit={signUpWithEmailPassword} className="space-y-3">
+          <Input placeholder="you@example.com" value={email} onChange={e=>setEmail(e.target.value)} />
+          <Input placeholder="password" type="password" value={password} onChange={e=>setPassword(e.target.value)} />
+        </form>
+        <Button variant="outline" className="w-full" onClick={signUpWithEmailPassword}>Sign up</Button>
+      </div>
+    </main>
+  );
+  
 }
