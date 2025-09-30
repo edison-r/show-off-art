@@ -5,7 +5,7 @@ import { createServerClient } from "@supabase/ssr";
 export async function GET(req: Request) {
   const url = new URL(req.url);
   const code = url.searchParams.get("code");
-  const redirectTo = url.searchParams.get("redirectTo") || "/app/dashboard";
+  const redirectTo = url.searchParams.get("redirectTo") || "/app/onboarding";
 
   if (code) {
     const cookieStore = await cookies();

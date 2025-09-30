@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { BsChatRightText } from 'react-icons/bs';
+import { FaMobileRetro } from 'react-icons/fa6';
 
 export default function Contact() {
   return (
@@ -16,15 +18,20 @@ export default function Contact() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-12 md:gap-20 font-mono text-xs sm:text-sm pt-4">
-              <Link href="mailto:hello@showoff.dev" className="relative group"> 
-                Write us
-                <span className="absolute left-0 -bottom-0.5 h-0.5 w-0 bg-footer-gray transition-all duration-500 group-hover:w-full"></span>
-              </Link>
-
-              <a href="tel:+34600100800" className="relative group">
-                +34 600 100 800
-                <span className="absolute left-0 -bottom-0.5 h-0.5 w-0 bg-footer-gray transition-all duration-500 group-hover:w-full"></span>
-              </a>
+              <div className="flex flex-row gap-3 items-center hover:scale-105 transition duration-300">
+              <BsChatRightText />
+                <Link href="mailto:hello@showoff.dev" className="relative group"> 
+                  Write us
+                  <span className="absolute left-0 -bottom-0.5 h-0.5 w-0 bg-footer-gray transition-all duration-500 group-hover:w-full"></span>
+                </Link>
+              </div>
+              <div className="flex flex-row gap-3 items-center hover:scale-105 transition duration-300">
+                <FaMobileRetro />
+                <a href="tel:+34600100800" className="relative group">
+                  +34 600 100 800
+                  <span className="absolute left-0 -bottom-0.5 h-0.5 w-0 bg-footer-gray transition-all duration-500 group-hover:w-full"></span>
+                </a>
+              </div>
             </div>
           </div>
         </div>

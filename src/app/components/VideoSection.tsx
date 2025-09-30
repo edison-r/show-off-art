@@ -21,7 +21,6 @@ const VideoSection = forwardRef<HTMLElement>(function VideoSection(_, ref) {
         Your browser does not support the video tag.
       </video>
 
-      {/* Overlay para oscurecer */}
       <div className="absolute inset-0 bg-black/30" />
     </section>
   );
