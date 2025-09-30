@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { useNavigationHelper } from "@/hooks/useNavigationHelper";
+import { PageWrapper } from "@app/components/PageWrapper";
+
 
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
@@ -99,7 +101,7 @@ export default function LoginPage() {
     <main className="min-h-screen bg-[var(--olive)] text-[var(--olive-cream)]">
       <Header />
 
-      <section className="relative px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 pb-10 md:pt-20 md:pb-10">
+      <PageWrapper className="relative px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 pb-10 md:pt-20 md:pb-10">
         <h1 className="relative z-10 font-titles font-extrabold text-[10vw] sm:text-[8vw] md:text-[7vw] lg:text-[8vw] leading-[0.8] select-none">
           Welcome back
         </h1>
@@ -135,7 +137,7 @@ export default function LoginPage() {
               <div className="flex items-center justify-between">
                 <label htmlFor="login-password" className="text-sm font-medium">Password</label>
                 <a 
-                  onClick={() => navigateWithTransition('/reset-password', { 
+                  onClick={() => navigateWithTransition('/auth/reset-password', { 
                     direction: "down", 
                     color: "var(--olive)",
                     duration: 1200
@@ -219,7 +221,7 @@ export default function LoginPage() {
             </p>
           </form>
         </div>
-      </section>
+      </PageWrapper>
 
       <Footer />
     </main>

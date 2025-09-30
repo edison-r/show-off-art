@@ -36,7 +36,7 @@ export default function Header() {
           })}
           className="flex items-center gap-2 hover:opacity-80 transition-opacity"
         >
-        <span className="font-titles tracking-wide text-sm sm:text-base">show-off</span>
+        <span className="font-titles cursor-pointer tracking-wide text-sm sm:text-base">show-off</span>
         </button>
         
         <nav className="hidden md:flex items-center justify-between gap-4 lg:gap-6 text-xs sm:text-sm">

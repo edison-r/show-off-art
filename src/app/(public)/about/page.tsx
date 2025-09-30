@@ -11,7 +11,6 @@ export default function AboutPage() {
             <main>
                 <Header />
                 <PageWrapper
-                    backgroundColor="blue"
                     className="min-h-screen bg-blue-50 text-foreground flex flex-col items-center justify-center transform-gpu"
                 >
                     <div className="max-w-4xl mx-auto px-6">

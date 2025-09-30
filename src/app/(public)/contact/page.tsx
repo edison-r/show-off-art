@@ -11,7 +11,6 @@ export default function ContactPage() {
             <main>
                 <Header />
                 <PageWrapper
-                    backgroundColor="yellow"
                     className="min-h-screen bg-yellow-50 text-foreground transform-gpu"
                 >
                     <div className="max-w-4xl mx-auto px-6 py-16">

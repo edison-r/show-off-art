@@ -13,6 +13,7 @@ import VideoSection from "@app/components/VideoSection";
 import Impact from "@app/components/Impact";
 import Contact from "@app/components/Contact";
 import Footer from "@app/components/Footer";
+import { PageWrapper } from "@/app/components/PageWrapper";
 
 export default function HomePage() {
   const [doParallax, setDoParallax] = useState(false);
@@ -51,7 +52,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen relative">
-      <main
+      <PageWrapper
         data-theme={theme}
         className="min-h-screen transition-colors duration-700 bg-[var(--bg)] text-[var(--fg)]"
       >
@@ -70,7 +71,7 @@ export default function HomePage() {
           <Contact />
           <Footer />
         </motion.div>
-      </main>
+      </PageWrapper>
 
       {isChecking && (
         <div className="pointer-events-none fixed inset-0 z-[9999] bg-black flex items-center justify-center">

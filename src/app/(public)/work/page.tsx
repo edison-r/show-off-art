@@ -20,7 +20,6 @@ export default function WorkPage() {
             <main>
                 <Header />
                 <PageWrapper
-                    backgroundColor="var(--fire)"
                     className="min-h-screen bg-fire text-foreground transform-gpu"
                 >
                     <div className="max-w-6xl mx-auto px-6 py-16">
