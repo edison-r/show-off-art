@@ -1,14 +1,16 @@
+// /login
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
+import { useNavigationHelper } from "@/hooks/useNavigationHelper";
+
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { supabase } from "@/lib/supabase/supabaseClient";
 import { Input } from "@app/components/ui/input";
-import { Button } from "@app/components/ui/button";
+import { FaGoogle } from 'react-icons/fa6';
 
 const SignInSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -18,6 +20,8 @@ type SignInInput = z.infer<typeof SignInSchema>;
 
 export default function LoginPage() {
   const router = useRouter();
+  const { navigateWithTransition } = useNavigationHelper();
+  
   const [form, setForm] = useState<SignInInput>({ email: "", password: "" });
   const [showPw, setShowPw] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -41,7 +45,6 @@ export default function LoginPage() {
       });
       if (error) throw error;
 
-      // Comprobar perfil
       const { data: profile } = await supabase
         .from("profiles")
         .select("username")
@@ -86,7 +89,6 @@ export default function LoginPage() {
         options: { redirectTo },
       });
       if (error) throw error;
-      // redirige a Google
     } catch (err: any) {
       setMsg({ type: "error", text: err?.message ?? "Google sign-in failed" });
       setLoading(false);
@@ -94,17 +96,17 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[var(--bg)] text-[var(--fg)]">
+    <main className="min-h-screen bg-[var(--olive)] text-[var(--olive-cream)]">
       <Header />
 
-      <section className="relative mx-auto max-w-6xl px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 pt-12 pb-24 md:pt-20 md:pb-28">
-        <h1 className="font-titles font-extrabold text-[12vw] sm:text-[10vw] md:text-[7vw] lg:text-[6.5vw] leading-[0.8] mb-8">
+      <section className="relative px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 pb-10 md:pt-20 md:pb-10">
+        <h1 className="relative z-10 font-titles font-extrabold text-[10vw] sm:text-[8vw] md:text-[7vw] lg:text-[8vw] leading-[0.8] select-none">
           Welcome back
         </h1>
 
         {msg && (
           <div
-            className={`mb-6 rounded-lg border px-4 py-3 text-sm max-w-xl ${
+            className={`-mb-10 mt-4 rounded-lg border px-4 py-3 text-sm max-w-xl ${
               msg.type === "error"
                 ? "border-red-300 bg-red-50 text-red-700"
                 : "border-green-300 bg-green-50 text-green-700"
@@ -114,7 +116,7 @@ export default function LoginPage() {
           </div>
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
+        <div className="mt-16 items-center">
           <form onSubmit={handleLogin} className="w-full max-w-xl space-y-4">
             <div className="space-y-2">
               <label htmlFor="login-email" className="text-sm font-medium block">Email</label>
@@ -132,9 +134,16 @@ export default function LoginPage() {
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <label htmlFor="login-password" className="text-sm font-medium">Password</label>
-                <Link href="/reset-password" className="text-xs text-blue-600 hover:underline">
+                <a 
+                  onClick={() => navigateWithTransition('/reset-password', { 
+                    direction: "down", 
+                    color: "var(--olive)",
+                    duration: 1200
+                  })}
+                  className="font-mono text-xs cursor-pointer hover:text-black"
+                >
                   Forgot password?
-                </Link>
+                </a>
               </div>
               <div className="relative">
                 <Input
@@ -148,7 +157,7 @@ export default function LoginPage() {
                 />
                 <button
                   type="button"
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-neutral-500 hover:text-neutral-700"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 font-mono text-xs cursor-pointer hover:text-black"
                   onClick={() => setShowPw((v) => !v)}
                 >
                   {showPw ? "Hide" : "Show"}
@@ -156,49 +165,59 @@ export default function LoginPage() {
               </div>
             </div>
 
-            <Button type="submit" disabled={loading} className="w-full">
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full flex items-center justify-center gap-2 cursor-pointer border border-[var(--olive-cream)] rounded-lg py-2 hover:bg-[var(--olive-cream)] hover:text-[var(--olive)] transition"
+            >
               {loading ? "Signing in..." : "Sign in"}
-            </Button>
+            </button>
 
             <div className="relative my-6">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-neutral-300" />
+                <div className="w-full border-t border-[var(--olive-cream)]" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-[var(--bg)] text-neutral-500">Or continue with</span>
+                <span className="px-2 bg-[var(--olive-cream)] text-[var(--olive)]">
+                  Or continue with
+                </span>
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-              <Button type="button" variant="outline" disabled={loading} onClick={handleMagicLink}>
+              <button
+                type="button"
+                disabled={loading}
+                onClick={handleMagicLink}
+                className="flex items-center justify-center gap-2 cursor-pointer border border-[var(--olive-cream)] rounded-lg py-2 hover:bg-[var(--olive-cream)] hover:text-[var(--olive)] transition"
+              >
                 Magic link
-              </Button>
-              <Button type="button" variant="outline" disabled={loading} onClick={handleGoogle}>
+              </button>
+              <button
+                type="button"
+                disabled={loading}
+                onClick={handleGoogle}
+                className="flex items-center justify-center gap-2 cursor-pointer border border-[var(--olive-cream)] rounded-lg py-2 hover:bg-[var(--olive-cream)] hover:text-[var(--olive)] transition"
+              >
                 Google
-              </Button>
+                <FaGoogle />
+              </button>
             </div>
 
-            <p className="mt-6 text-sm text-neutral-500">
-              Don’t have an account?{" "}
-              <Link href="/join" className="underline hover:text-blue-600">
+            <p className="mt-6 text-md">
+              Don't have an account?{" "}
+              <a 
+                onClick={() => navigateWithTransition('/auth/join', { 
+                  direction: 'down', 
+                  color: "var(--olive)",
+                  duration: 1200
+                })}
+                className="underline hover:text-black cursor-pointer"
+              >
                 Create one
-              </Link>
+              </a>
             </p>
           </form>
-
-          <aside className="w-full max-w-xl">
-            <div className="rounded-2xl border border-neutral-200 p-6 sm:p-8 bg-neutral-50">
-              <h2 className="font-titles text-2xl sm:text-3xl mb-4">Built for creators</h2>
-              <p className="text-sm sm:text-base text-neutral-600 mb-6 leading-relaxed">
-                Showcase your work with beautiful, customizable portfolio templates.
-              </p>
-              <ul className="space-y-3 text-sm sm:text-base text-neutral-700">
-                <li className="flex items-start gap-2"><span className="text-green-600 mt-0.5">✓</span><span>Clean templates</span></li>
-                <li className="flex items-start gap-2"><span className="text-green-600 mt-0.5">✓</span><span>Magic link & Google</span></li>
-                <li className="flex items-start gap-2"><span className="text-green-600 mt-0.5">✓</span><span>Private & public projects</span></li>
-              </ul>
-            </div>
-          </aside>
         </div>
       </section>
 

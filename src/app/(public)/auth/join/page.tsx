@@ -204,7 +204,7 @@ export default function RegisterPage() {
             <p className="mt-6 text-md">
               Already have an account?{" "}
               <a 
-                onClick={() => navigateWithTransition('/login', { 
+                onClick={() => navigateWithTransition('/auth/login', { 
                   direction: 'down', 
                   color: "var(--olive)",
                   duration: 1200

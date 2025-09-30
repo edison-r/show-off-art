@@ -81,7 +81,7 @@ export default function Header() {
             Contact
           </button>
           <button
-            onClick={() => navigateWithTransition('/join', { 
+            onClick={() => navigateWithTransition('/auth/join', { 
               direction: 'down', 
               color: "var(--olive)",
               duration: 1200
