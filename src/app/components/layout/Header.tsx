@@ -53,7 +53,7 @@ export default function Header() {
           <button 
             onClick={() => navigateWithTransition('/work', { 
               direction: 'down', 
-              color: "var(--fire)",
+              color: "var(--superblue)",
               duration: 1200
             })}
             className="hover:underline cursor-pointer"
@@ -73,7 +73,7 @@ export default function Header() {
           <button 
             onClick={() => navigateWithTransition('/contact', { 
               direction: 'down', 
-              color: "var(--superblue)",
+              color: "var(--footer)",
               duration: 1200
             })}
             className="hover:underline cursor-pointer"
