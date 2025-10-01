@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { z } from "zod";
+import { createBrowserClient } from "@supabase/ssr";
 import { useNavigationHelper } from "@/hooks/useNavigationHelper";
 import { PageWrapper } from "@/app/components/shared/PageWrapper";
 
 import Header from "@/app/components/layout/Header";
 import Footer from "@/app/components/layout/Footer";
-import { supabase } from "@/lib/supabase/supabaseClient";
 import { Input } from "@app/components/ui/input";
 import { FaGoogle } from "react-icons/fa6";
 
@@ -17,6 +17,13 @@ const RegisterSchema = z.object({
   accept_terms: z.boolean(),
 });
 type RegisterInput = z.infer<typeof RegisterSchema>;
+
+function getSupabaseClient() {
+  return createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
+}
 
 export default function RegisterPage() {
   const { navigateWithTransition } = useNavigationHelper();
@@ -31,11 +38,14 @@ export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState<null | { type: "success" | "error"; text: string }>(null);
 
-  const redirectTo = `${location.origin}/auth/callback`;
+  const redirectTo = typeof window !== "undefined" 
+    ? `${window.location.origin}/auth/callback`
+    : "";
 
   async function handleRegister(e: React.FormEvent) {
     e.preventDefault();
     setMsg(null);
+    
     const parsed = RegisterSchema.safeParse(form);
     if (!parsed.success) {
       setMsg({ type: "error", text: parsed.error.issues[0].message });
@@ -49,11 +59,14 @@ export default function RegisterPage() {
 
     try {
       setLoading(true);
+      const supabase = getSupabaseClient();
+      
       const { error } = await supabase.auth.signUp({
         email: form.email,
         password: form.password,
         options: { emailRedirectTo: redirectTo },
       });
+      
       if (error) throw error;
 
       setMsg({
@@ -72,10 +85,13 @@ export default function RegisterPage() {
     setMsg(null);
     try {
       setLoading(true);
+      const supabase = getSupabaseClient();
+      
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: { redirectTo },
       });
+      
       if (error) throw error;
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : "Google sign-in failed";
@@ -107,7 +123,9 @@ export default function RegisterPage() {
         <div className="mt-16 items-center">
           <form onSubmit={handleRegister} className="w-full max-w-xl space-y-4">
             <div className="space-y-2">
-              <label htmlFor="reg-email" className="text-sm font-medium block">Email</label>
+              <label htmlFor="reg-email" className="text-sm font-medium block">
+                Email
+              </label>
               <Input
                 id="reg-email"
                 type="email"
@@ -120,7 +138,9 @@ export default function RegisterPage() {
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="reg-password" className="text-sm font-medium block">Password</label>
+              <label htmlFor="reg-password" className="text-sm font-medium block">
+                Password
+              </label>
               <div className="relative">
                 <Input
                   id="reg-password"
@@ -163,7 +183,9 @@ export default function RegisterPage() {
                     duration: 1200
                   })}
                   className="underline hover:text-black cursor-pointer"
-                > Terms & Privacy Policy</a>{" "}
+                >
+                  Terms & Privacy Policy
+                </a>{" "}
                 and the{" "}
                 <a 
                   onClick={() => navigateWithTransition("/cookies", { 
@@ -172,7 +194,9 @@ export default function RegisterPage() {
                     duration: 1200
                   })}
                   className="underline hover:text-black cursor-pointer"
-                > Cookies Policy</a>.
+                >
+                  Cookies Policy
+                </a>.
               </label>
             </div>
 
