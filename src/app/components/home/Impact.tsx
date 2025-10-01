@@ -9,7 +9,7 @@ export default function Impact() {
         <div className="pointer-events-none hidden md:block"></div>
         <div className="mt-12 sm:mt-16 md:mt-20 lg:mt-24 text-base sm:text-lg md:text-xl font-light leading-tight">
           <p>
-            That's why our platform focuses on delivering beautiful, accessible, and professional portfolios that leave a mark.
+            {"That's why our platform focuses on delivering beautiful, accessible, and professional portfolios that leave a mark."}
           </p><br />
           <p>
             From sleek templates to intuitive customization, we give creators everything they need to go from concept to showcase.

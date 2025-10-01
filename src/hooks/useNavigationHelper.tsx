@@ -18,7 +18,7 @@ export function useNavigationHelper() {
         triggerWipe(() => {
         router.push(path);
         }, {
-        duration: 1400,
+        duration: 1500,
         ...options
         });
     };
