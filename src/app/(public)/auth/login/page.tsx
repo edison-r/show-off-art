@@ -141,7 +141,7 @@ export default function LoginPage() {
                 <a 
                   onClick={() => navigateWithTransition("/auth/reset-password", { 
                     direction: "down", 
-                    color: "var(--olive)",
+                    color: "var(--footer)",
                     duration: 1200
                   })}
                   className="font-mono text-xs cursor-pointer hover:text-black"
