@@ -52,25 +52,27 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen relative">
-      <PageWrapper
-        data-theme={theme}
-        className="min-h-screen transition-colors duration-700 bg-[var(--bg)] text-[var(--fg)]"
-      >
-        <Header />
-        <motion.div
-          className="min-h-screen transform-gpu"
-          initial={{ y: initialY }}
-          animate={{ y: animateY }}
-          transition={{ duration: shouldShowSplash ? 1.3 : 0, ease: [0.22, 1, 0.36, 1] }}
+      <PageWrapper>
+        <main
+          data-theme={theme}
+          className="min-h-screen transition-colors duration-700 bg-[var(--bg)] text-[var(--fg)]"
         >
-          <Hero />
-          <Templates ref={templatesRef}/>
-          <ClientsSection/>
-          <VideoSection ref={videoRef}/>
-          <Impact />
-          <Contact />
-          <Footer />
-        </motion.div>
+          <Header />
+          <motion.div
+            className="min-h-screen transform-gpu"
+            initial={{ y: initialY }}
+            animate={{ y: animateY }}
+            transition={{ duration: shouldShowSplash ? 1.3 : 0, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <Hero />
+            <Templates ref={templatesRef}/>
+            <ClientsSection/>
+            <VideoSection ref={videoRef}/>
+            <Impact />
+            <Contact />
+            <Footer />
+          </motion.div>
+        </main>
       </PageWrapper>
 
       {isChecking && (

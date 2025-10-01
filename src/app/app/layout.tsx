@@ -8,7 +8,7 @@ export default async function PrivateLayout({ children }: { children: ReactNode 
   const { data: { user }, error } = await supabase.auth.getUser();
   
   if (error || !user) {
-    redirect("/join");
+    redirect("/auth/join");
   }
 
   return <>{children}</>;

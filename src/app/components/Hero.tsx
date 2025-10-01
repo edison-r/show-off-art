@@ -16,25 +16,25 @@ export default function Hero() {
           </h1>
           <div className="pointer-events-none relative h-[45vw] sm:h-[40vw] md:h-[32vw] lg:h-[28vw] xl:h-[24vw]">
             <ParallaxItem
-              src="/hero1.jpg"
+              src="/images/hero1.jpg"
               alt="preview 1"
               speed={-2}
               className="absolute z-20 left-[8vw] sm:left-[10vw] top-[0vw] w-[24vw] sm:w-[20vw] aspect-[3/4] overflow-hidden"
             />
             <ParallaxItem
-              src="/hero2.jpg"
+              src="/images/hero2.jpg"
               alt="preview 2"
               speed={-4}
               className="absolute z-20 left-[70vw] sm:left-[65vw] top-[-15vw] sm:top-[-18vw] w-[26vw] sm:w-[22vw] aspect-[3/4] overflow-hidden"
             />
             <ParallaxItem
-              src="/hero4.jpg"
+              src="/images/hero4.jpg"
               alt="preview 3"
               speed={-1}
               className="absolute z-0 right-[30vw] sm:right-[35vw] top-[-35vw] sm:top-[-35vw] w-[18vw] sm:w-[15vw] aspect-[3/4] overflow-hidden"
             />
             <ParallaxItem
-              src="/hero3.jpg"
+              src="/images/hero3.jpg"
               alt="preview 4"
               speed={0}
               className="absolute left-[-8vw] sm:left-[-10vw] top-[-30vw] sm:top-[-35vw] w-[18vw] sm:w-[15vw] aspect-[3/4] overflow-hidden"

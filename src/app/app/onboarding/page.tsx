@@ -7,7 +7,7 @@ export default async function OnboardingPage() {
   
   const { data: { user }, error: authError } = await supabase.auth.getUser();
   
-  if (authError || !user) redirect("/join");
+  if (authError || !user) redirect("/auth/join");
 
   const { data: profile, error: profileError } = await supabase
     .from("profiles")
