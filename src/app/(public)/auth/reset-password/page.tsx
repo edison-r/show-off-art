@@ -34,21 +34,25 @@ export default function ResetPasswordPage() {
         }
 
         try {
-        setLoading(true);
-        const { error } = await supabase.auth.resetPasswordForEmail(form.email, {
-            redirectTo,
-        });
+            setLoading(true);
+            const { error } = await supabase.auth.resetPasswordForEmail(form.email, {
+                redirectTo,
+            });
 
-        if (error) throw error;
+            if (error) throw error;
 
-        setMsg({
-            type: "success",
-            text: "Check your email for a password reset link",
-        });
-        } catch (err: any) {
-        setMsg({ type: "error", text: err?.message ?? "Failed to send reset email" });
+            setMsg({
+                type: "success",
+                text: "Check your email for a password reset link",
+            });
+        } catch (err) {
+            const errorMessage = err instanceof Error
+            ? err.message
+            : "Failed to send reset email";
+
+            setMsg({ type: "error", text: errorMessage });
         } finally {
-        setLoading(false);
+            setLoading(false);
         }
     }
 
@@ -76,7 +80,7 @@ export default function ResetPasswordPage() {
             <div className="mt-16 items-center">
             <div className="w-full max-w-xl">
                 <p className="text-lg mb-8 font-light">
-                Enter your email address and we'll send you a link to reset your password.
+                {`Enter your email address and we'll send you a link to reset your password.`}
                 </p>
 
                 <form onSubmit={handleReset} className="space-y-4">
@@ -128,11 +132,10 @@ export default function ResetPasswordPage() {
                 </div>
                 </form>
 
-                {/* Info adicional */}
                 <div className="mt-12 p-4 border border-[var(--olive-cream)]/30 rounded-lg">
                 <p className="font-mono text-sm text-[var(--olive-cream)]/70">
                     <strong>Note:</strong> The reset link will expire in 1 hour. 
-                    If you don't receive an email, check your spam folder.
+                    {`If you don't receive an email, check your spam folder.`}
                 </p>
                 </div>
             </div>
