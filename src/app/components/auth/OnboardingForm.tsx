@@ -19,7 +19,6 @@ export default function OnboardingForm({
         defaultValues: {
             username: defaultUsername,
             display_name: defaultDisplayName,
-            accept_terms: false,
         },
         mode: "onBlur",
     });
@@ -141,7 +140,10 @@ export default function OnboardingForm({
 
             <Button 
                 type="submit" 
-                disabled={form.formState.isSubmitting}
+                disabled={
+                    form.formState.isSubmitting ||
+                    !form.watch("accept_terms")
+                }
                 className="w-full"
             >
                 {form.formState.isSubmitting ? "Saving..." : "Complete profile"}
