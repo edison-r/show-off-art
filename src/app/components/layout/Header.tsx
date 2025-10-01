@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigationHelper } from "@/hooks/useNavigationHelper";
 import { useLockBodyScroll } from "@/hooks/useLockBodyScroll";
-import MobileMenuPortal from "./MobileMenuPortal";
+import MobileMenuPortal from "../layout/MobileMenuPortal";
 
 export default function Header() {
   const { navigateWithTransition } = useNavigationHelper();
@@ -90,6 +90,16 @@ export default function Header() {
           >
             Join Us
           </button>
+          <button
+            onClick={() => navigateWithTransition('/auth/login', { 
+              direction: 'down', 
+              color: "var(--olive)",
+              duration: 1200
+            })}
+            className="hover:underline cursor-pointer"
+          >
+            Log In
+          </button>          
         </nav>
         
         <button

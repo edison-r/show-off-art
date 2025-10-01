@@ -16,8 +16,7 @@ const VideoSection = forwardRef<HTMLElement>(function VideoSection(_, ref) {
         playsInline
         preload="auto"
       >
-        <source src="/demo.mp4" type="video/mp4" />
-        <source src="/demo.webm" type="video/webm" />
+        <source src="/videos/demo.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 

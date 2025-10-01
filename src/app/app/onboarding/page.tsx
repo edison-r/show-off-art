@@ -1,6 +1,6 @@
 import { getSupabaseServer } from "@/lib/supabase/supabaseServer";
 import { redirect } from "next/navigation";
-import OnboardingForm from "@app/components/OnboardingForm";
+import OnboardingForm from "@/app/components/auth/OnboardingForm";
 
 export default async function OnboardingPage() {
   const supabase = await getSupabaseServer();

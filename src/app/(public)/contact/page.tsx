@@ -1,122 +1,130 @@
-"use client"
-import { useNavigationHelper } from '@/hooks/useNavigationHelper';
-import Header from "@app/components/Header";
-import { PageWrapper } from "@app/components/PageWrapper";
+"use client";
+
+import Header from "@app/components/layout/Header";
+import Footer from "@app/components/layout/Footer";
+import { PageWrapper } from "@app/components/shared/PageWrapper";
+import { Input } from "@/app/components/ui/input";
 
 export default function ContactPage() {
-    const { navigateWithTransition } = useNavigationHelper();
+  return (
+    <main className="min-h-screen bg-background text-foreground">
+      <Header />
+      
+      <PageWrapper>
+        <section className="relative px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-12 md:py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+            {/* Left - Info */}
+            <div>
+              <h1 className="font-titles font-extrabold text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[10vw] leading-[0.8] mb-8">
+                LET'S TALK
+              </h1>
+              
+              <p className="text-xl md:text-2xl font-light mb-12 leading-relaxed">
+                Have a project in mind? Want to collaborate? 
+                Or just want to say hi? We'd love to hear from you.
+              </p>
 
-    return (
-        <div className="relative min-h-screen overflow-hidden">
-            <main>
-                <Header />
-                <PageWrapper
-                    className="min-h-screen bg-yellow-50 text-foreground transform-gpu"
+              <div className="space-y-8">
+                <div>
+                  <h3 className="font-mono text-sm mb-3 text-neutral-500">EMAIL</h3>
+                  <a 
+                    href="mailto:hello@show-off.com" 
+                    className="text-xl md:text-2xl hover:text-blue transition-colors"
+                  >
+                    hello@show-off.com
+                  </a>
+                </div>
+
+                <div>
+                  <h3 className="font-mono text-sm mb-3 text-neutral-500">PHONE</h3>
+                  <a 
+                    href="tel:+34600100800" 
+                    className="text-xl md:text-2xl hover:text-blue transition-colors"
+                  >
+                    +34 600 100 800
+                  </a>
+                </div>
+
+                <div>
+                  <h3 className="font-mono text-sm mb-3 text-neutral-500">LOCATION</h3>
+                  <p className="text-xl md:text-2xl">
+                    Barcelona, Spain
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="font-mono text-sm mb-3 text-neutral-500">SOCIAL</h3>
+                  <div className="flex gap-6 text-lg">
+                    <a href="#" className="hover:text-blue transition-colors">Instagram</a>
+                    <a href="#" className="hover:text-blue transition-colors">LinkedIn</a>
+                    <a href="#" className="hover:text-blue transition-colors">Behance</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right - Form */}
+            <div className="lg:pt-32">
+              <form className="space-y-6">
+                <div className="space-y-2">
+                  <label htmlFor="name" className="text-sm font-medium block">
+                    Name
+                  </label>
+                  <Input
+                    id="name"
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-sm font-medium block">
+                    Email
+                  </label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="you@example.com"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="company" className="text-sm font-medium block">
+                    Company (optional)
+                  </label>
+                  <Input
+                    id="company"
+                    placeholder="Your company"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="message" className="text-sm font-medium block">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    rows={6}
+                    placeholder="Tell us about your project..."
+                    className="w-full px-3 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-blue focus:border-transparent"
+                    required
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full px-6 py-3 bg-blue text-white rounded-lg hover:bg-blue/90 transition-colors font-semibold"
                 >
-                    <div className="max-w-4xl mx-auto px-6 py-16">
-                        <div className="text-center mb-16">
-                            <h1 className="text-5xl md:text-7xl font-bold mb-8 text-yellow-800">
-                                Contáctanos
-                            </h1>
-                            <p className="text-xl md:text-2xl text-yellow-600 leading-relaxed">
-                                ¿Tienes alguna pregunta o quieres colaborar? 
-                                Estamos aquí para ayudarte.
-                            </p>
-                        </div>
+                  Send message
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+      </PageWrapper>
 
-                        <div className="grid md:grid-cols-2 gap-12">
-                            {/* Formulario */}
-                            <div className="bg-white p-8 rounded-lg shadow-sm">
-                                <h2 className="text-2xl font-bold mb-6 text-yellow-700">Envíanos un mensaje</h2>
-                                <form className="space-y-4">
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">Nombre</label>
-                                        <input 
-                                            type="text" 
-                                            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
-                                            placeholder="Tu nombre completo"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                                        <input 
-                                            type="email" 
-                                            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
-                                            placeholder="tu@email.com"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">Mensaje</label>
-                                        <textarea 
-                                            rows={5}
-                                            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
-                                            placeholder="Cuéntanos en qué podemos ayudarte..."
-                                        ></textarea>
-                                    </div>
-                                    <button 
-                                        type="submit"
-                                        className="w-full px-6 py-3 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition-colors font-semibold"
-                                    >
-                                        Enviar mensaje
-                                    </button>
-                                </form>
-                            </div>
-
-                            <div className="space-y-8">
-                                <div>
-                                    <h2 className="text-2xl font-bold mb-6 text-yellow-700">Información de contacto</h2>
-                                    <div className="space-y-4">
-                                        <div className="flex items-start space-x-3">
-                                            <div className="w-6 h-6 bg-yellow-200 rounded-full flex-shrink-0 mt-1"></div>
-                                            <div>
-                                                <h3 className="font-semibold text-gray-800">Email</h3>
-                                                <p className="text-gray-600">hello@show-off.com</p>
-                                            </div>
-                                        </div>
-                                        <div className="flex items-start space-x-3">
-                                            <div className="w-6 h-6 bg-yellow-200 rounded-full flex-shrink-0 mt-1"></div>
-                                            <div>
-                                                <h3 className="font-semibold text-gray-800">Teléfono</h3>
-                                                <p className="text-gray-600">+1 (555) 123-4567</p>
-                                            </div>
-                                        </div>
-                                        <div className="flex items-start space-x-3">
-                                            <div className="w-6 h-6 bg-yellow-200 rounded-full flex-shrink-0 mt-1"></div>
-                                            <div>
-                                                <h3 className="font-semibold text-gray-800">Ubicación</h3>
-                                                <p className="text-gray-600">Barcelona, España</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="bg-white p-6 rounded-lg shadow-sm">
-                                    <h3 className="font-semibold text-yellow-700 mb-3">Síguenos</h3>
-                                    <div className="flex space-x-4">
-                                        <div className="w-10 h-10 bg-yellow-200 rounded-full"></div>
-                                        <div className="w-10 h-10 bg-yellow-200 rounded-full"></div>
-                                        <div className="w-10 h-10 bg-yellow-200 rounded-full"></div>
-                                        <div className="w-10 h-10 bg-yellow-200 rounded-full"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="text-center mt-12">
-                            <button 
-                                onClick={() => navigateWithTransition('/', { 
-                                    direction: 'right', 
-                                    color: 'black',
-                                    duration: 1600
-                                })}
-                                className="px-8 py-4 border border-yellow-600 text-yellow-600 rounded-lg hover:bg-yellow-50 transition-colors font-semibold"
-                            >
-                                ← Volver al inicio
-                            </button>
-                        </div>
-                    </div>
-                </PageWrapper>
-            </main>
-        </div>
-    );
+      <Footer />
+    </main>
+  );
 }

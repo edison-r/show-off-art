@@ -1,6 +1,6 @@
 "use client";
 
-import ParallaxItem from "./ParallaxItem";
+import ParallaxItem from "../shared/ParallaxItem";
 
 export default function Hero() {
   return (

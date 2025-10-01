@@ -4,10 +4,10 @@ import { useState } from "react";
 import Link from "next/link";
 import { z } from "zod";
 import { useNavigationHelper } from "@/hooks/useNavigationHelper";
-import { PageWrapper } from "@app/components/PageWrapper";
+import { PageWrapper } from "@/app/components/shared/PageWrapper";
 
-import Header from "@/app/components/Header";
-import Footer from "@/app/components/Footer";
+import Header from "@/app/components/layout/Header";
+import Footer from "@/app/components/layout/Footer";
 import { supabase } from "@/lib/supabase/supabaseClient";
 import { Input } from "@app/components/ui/input";
 import { FaGoogle } from 'react-icons/fa6';
@@ -83,7 +83,7 @@ export default function RegisterPage() {
   return (
     <main className="min-h-screen bg-[var(--olive)] text-[var(--olive-cream)]">
       <Header />
-      <PageWrapper className="relative px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 pb-10 md:pt-20 md:pb-10">
+      <PageWrapper className="relative px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 md:pt-20 md:pb-10">
         <h1 className="relative z-10 font-titles font-extrabold text-[10vw] sm:text-[8vw] md:text-[7vw] lg:text-[8vw] leading-[0.8] select-none">
           Show your work to the world
         </h1>
