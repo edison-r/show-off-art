@@ -1,4 +1,3 @@
-// OnboardingForm.tsx - SIN validación en tiempo real
 "use client";
 
 import { useForm } from "react-hook-form";
@@ -77,7 +76,7 @@ export default function OnboardingForm({ defaultUsername, defaultDisplayName, }:
             {form.formState.errors.username && (
                 <p className="text-sm text-red-600"> {form.formState.errors.username.message} </p>
             )}
-            <p className="text-xs text-neutral-500"> Letters, numbers, "_" and "-" only. 3-24 characters.</p>
+            <p className="text-xs text-neutral-500"> {`Letters, numbers, "_" and "-" only. 3-24 characters.`}</p>
         </div>
 
         {/* Display Name */}

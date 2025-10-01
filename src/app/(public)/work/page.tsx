@@ -94,11 +94,11 @@ export default function WorkPage() {
                 Want to work with us?
                 </h2>
                 <p className="text-xl mb-8">
-                Let's create something amazing together
+                {`Let's create something amazing together`}
                 </p>
                 <button 
-                    onClick={() => navigateWithTransition('/auth/join', {
-                        direction: 'down',
+                    onClick={() => navigateWithTransition("/auth/join", {
+                        direction: "down",
                         color: "var(--olive)",
                         duration: 1200
                     })}

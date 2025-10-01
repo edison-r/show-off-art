@@ -11,7 +11,7 @@ import Header from "@/app/components/layout/Header";
 import Footer from "@/app/components/layout/Footer";
 import { supabase } from "@/lib/supabase/supabaseClient";
 import { Input } from "@app/components/ui/input";
-import { FaGoogle } from 'react-icons/fa6';
+import { FaGoogle } from "react-icons/fa6";
 
 const SignInSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -136,7 +136,7 @@ export default function LoginPage() {
               <div className="flex items-center justify-between">
                 <label htmlFor="login-password" className="text-sm font-medium">Password</label>
                 <a 
-                  onClick={() => navigateWithTransition('/auth/reset-password', { 
+                  onClick={() => navigateWithTransition("/auth/reset-password", { 
                     direction: "down", 
                     color: "var(--olive)",
                     duration: 1200
@@ -206,10 +206,10 @@ export default function LoginPage() {
             </div>
 
             <p className="mt-6 text-md">
-              Don't have an account?{" "}
+              {`Don't have an account?`}{" "}
               <a 
-                onClick={() => navigateWithTransition('/auth/join', { 
-                  direction: 'down', 
+                onClick={() => navigateWithTransition("/auth/join", { 
+                  direction: "down", 
                   color: "var(--olive)",
                   duration: 1200
                 })}

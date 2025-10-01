@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { z } from "zod";
 import { useNavigationHelper } from "@/hooks/useNavigationHelper";
 import { PageWrapper } from "@/app/components/shared/PageWrapper";
@@ -10,11 +9,11 @@ import Header from "@/app/components/layout/Header";
 import Footer from "@/app/components/layout/Footer";
 import { supabase } from "@/lib/supabase/supabaseClient";
 import { Input } from "@app/components/ui/input";
-import { FaGoogle } from 'react-icons/fa6';
+import { FaGoogle } from "react-icons/fa6";
 
 const RegisterSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
+  email: z.email("Invalid email address"),
+  password: z.string().min(8, "Password must be at least 8 characters"),
   accept_terms: z.literal(true, { message: "You must accept the terms" }),
 });
 type RegisterInput = z.infer<typeof RegisterSchema>;
@@ -153,8 +152,8 @@ export default function RegisterPage() {
               <label htmlFor="accept-terms" className="font-mono text-sm">
                 I agree to the{" "}
                 <a 
-                  onClick={() => navigateWithTransition('/terms', { 
-                    direction: 'right', 
+                  onClick={() => navigateWithTransition("/terms", { 
+                    direction: "right", 
                     color: "white",
                     duration: 1200
                   })}
@@ -162,8 +161,8 @@ export default function RegisterPage() {
                 > Terms & Privacy Policy</a>{" "}
                 and the{" "}
                 <a 
-                  onClick={() => navigateWithTransition('/cookies', { 
-                    direction: 'right', 
+                  onClick={() => navigateWithTransition("/cookies", { 
+                    direction: "right", 
                     color: "white",
                     duration: 1200
                   })}
@@ -204,8 +203,8 @@ export default function RegisterPage() {
             <p className="mt-6 text-md">
               Already have an account?{" "}
               <a 
-                onClick={() => navigateWithTransition('/auth/login', { 
-                  direction: 'down', 
+                onClick={() => navigateWithTransition("/auth/login", { 
+                  direction: "down", 
                   color: "var(--olive)",
                   duration: 1200
                 })}

@@ -5,12 +5,12 @@ import Footer from "@app/components/layout/Footer";
 import { useNavigationHelper } from "@/hooks/useNavigationHelper";
 import { PageWrapper } from "@app/components/shared/PageWrapper";
 
-const team = [
+/* const team = [
   { name: "Edison Ronquillo", role: "Founder & Creative Director", image: "/hero1.jpg" },
   { name: "Maria Garcia", role: "Lead Designer", image: "/hero2.jpg" },
   { name: "James Chen", role: "Developer", image: "/hero3.jpg" },
   { name: "Sophie Martin", role: "Product Manager", image: "/hero4.jpg" },
-];
+]; */
 
 export default function AboutPage() {
     const { navigateWithTransition } = useNavigationHelper();
@@ -26,7 +26,7 @@ export default function AboutPage() {
                 ABOUT US
                 </h1>
                 <p className="text-2xl md:text-4xl font-light max-w-4xl leading-tight">
-                We're a team of designers, developers, and creators 
+                We are a team of designers, developers, and creators 
                 helping artists showcase their work to the world.
                 </p>
             </div>
@@ -43,12 +43,12 @@ export default function AboutPage() {
                         every artist deserves a beautiful platform to share their work.
                         </p>
                         <p>
-                        We've worked with hundreds of creatives—photographers, designers, 
+                        We"ve worked with hundreds of creatives—photographers, designers, 
                         illustrators, and more—to build portfolios that truly represent 
                         their unique style and vision.
                         </p>
                         <p>
-                        Today, we're proud to be the go-to platform for artists 
+                        Today, we are proud to be the go-to platform for artists 
                         who want more than just a template. They want a home for their art.
                         </p>
                     </div>
@@ -86,7 +86,7 @@ export default function AboutPage() {
                     Continuous Growth
                     </h3>
                     <p>
-                    We're always learning, iterating, and improving based on 
+                    We are always learning, iterating, and improving based on 
                     feedback from our community.
                     </p>
                 </div>
@@ -123,8 +123,8 @@ export default function AboutPage() {
                     Start building your portfolio today
                 </p>
                 <button 
-                    onClick={() => navigateWithTransition('/auth/join', {
-                        direction: 'down',
+                    onClick={() => navigateWithTransition("/auth/join", {
+                        direction: "down",
                         color: "var(--olive)",
                         duration: 1200
                     })}

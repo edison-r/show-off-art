@@ -16,12 +16,12 @@ export default function ContactPage() {
             {/* Left - Info */}
             <div>
               <h1 className="font-titles font-extrabold text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[10vw] leading-[0.8] mb-8">
-                LET'S TALK
+                {`LET'S TALK`}
               </h1>
               
               <p className="text-xl md:text-2xl font-light mb-12 leading-relaxed">
                 Have a project in mind? Want to collaborate?<br />
-                Or just want to say hi? We'd love to hear from you.
+                {`Or just want to say hi? We'd love to hear from you.`}
               </p>
 
               <div className="space-y-8">
