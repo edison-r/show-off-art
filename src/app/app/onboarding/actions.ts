@@ -1,4 +1,3 @@
-// actions.ts - CON MEJOR MANEJO DE ERRORES
 "use server";
 
 import { getSupabaseServer } from "@/lib/supabase/supabaseServer";
@@ -15,11 +14,15 @@ export async function completeOnboarding(formData: unknown) {
       throw new Error("Authentication required");
     }
 
-    // Validación con Zod
-    const parsed = RegisterSchema.parse(formData);
+    const result = RegisterSchema.safeParse(formData);
+    if (!result.success) {
+      const firstError = result.error.issues[0];
+      throw new Error(firstError?.message || "Invalid form data");
+    }
+
+    const parsed = result.data;
     const username = parsed.username.trim().toLowerCase();
 
-    // Verificar disponibilidad ANTES de hacer upsert
     const { data: existing, error: checkError } = await supabase
       .from("profiles")
       .select("id")
@@ -35,7 +38,6 @@ export async function completeOnboarding(formData: unknown) {
       throw new Error("Username already taken");
     }
 
-    // Crear/actualizar perfil
     const { error: profileError } = await supabase
       .from("profiles")
       .upsert({
@@ -52,7 +54,6 @@ export async function completeOnboarding(formData: unknown) {
     if (profileError) {
       console.error("Profile upsert error:", profileError);
       
-      // Capturar el error de constraint unique
       if (profileError.code === "23505") {
         throw new Error("Username already taken");
       }
@@ -60,7 +61,6 @@ export async function completeOnboarding(formData: unknown) {
       throw new Error("Unable to create profile");
     }
 
-    // Actualizar metadata del usuario
     const { error: updateError } = await supabase.auth.updateUser({
       data: {
         username,
@@ -71,20 +71,15 @@ export async function completeOnboarding(formData: unknown) {
 
     if (updateError) {
       console.error("Auth update error:", updateError);
-      // No fallar si solo falla la metadata
     }
 
     revalidatePath(`/u/${username}`);
     redirect("/app/dashboard");
     
-  } catch (error: any) {
-    // Si es un error de Zod, re-lanzar con mensaje claro
-    if (error.name === "ZodError") {
-      const firstError = error.errors?.[0];
-      throw new Error(firstError?.message || "Invalid form data");
+  } catch (error) {
+    if (error instanceof Error) {
+      throw error;
     }
-    
-    // Re-lanzar el error con el mensaje que ya tenemos
-    throw error;
+    throw new Error("An unexpected error occurred");
   }
 }

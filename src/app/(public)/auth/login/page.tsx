@@ -53,8 +53,9 @@ export default function LoginPage() {
         .maybeSingle();
 
       router.replace(profile?.username ? "/app/dashboard" : "/app/onboarding");
-    } catch (err: any) {
-      setMsg({ type: "error", text: err?.message ?? "Invalid email or password" });
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : "Invalid email or password";
+      setMsg({ type: "error", text: errorMessage });
     } finally {
       setLoading(false);
     }
@@ -74,8 +75,9 @@ export default function LoginPage() {
       });
       if (error) throw error;
       setMsg({ type: "success", text: "Check your inbox for the magic link" });
-    } catch (err: any) {
-      setMsg({ type: "error", text: err?.message ?? "Could not send magic link" });
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : "Could not send magic link";
+      setMsg({ type: "error", text: errorMessage });
     } finally {
       setLoading(false);
     }
@@ -90,8 +92,9 @@ export default function LoginPage() {
         options: { redirectTo },
       });
       if (error) throw error;
-    } catch (err: any) {
-      setMsg({ type: "error", text: err?.message ?? "Google sign-in failed" });
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : "Google sign-in failed";
+      setMsg({ type: "error", text: errorMessage });
       setLoading(false);
     }
   }

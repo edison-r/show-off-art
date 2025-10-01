@@ -43,9 +43,9 @@ export default function AboutPage() {
                         every artist deserves a beautiful platform to share their work.
                         </p>
                         <p>
-                        We"ve worked with hundreds of creatives—photographers, designers, 
+                        {`We've worked with hundreds of creatives—photographers, designers, 
                         illustrators, and more—to build portfolios that truly represent 
-                        their unique style and vision.
+                        their unique style and vision.`}
                         </p>
                         <p>
                         Today, we are proud to be the go-to platform for artists 

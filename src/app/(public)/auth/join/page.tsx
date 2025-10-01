@@ -14,7 +14,7 @@ import { FaGoogle } from "react-icons/fa6";
 const RegisterSchema = z.object({
   email: z.email("Invalid email address"),
   password: z.string().min(8, "Password must be at least 8 characters"),
-  accept_terms: z.literal(true, { message: "You must accept the terms" }),
+  accept_terms: z.boolean(),
 });
 type RegisterInput = z.infer<typeof RegisterSchema>;
 
@@ -41,6 +41,12 @@ export default function RegisterPage() {
       setMsg({ type: "error", text: parsed.error.issues[0].message });
       return;
     }
+    
+    if (!form.accept_terms) {
+      setMsg({ type: "error", text: "You must accept the terms" });
+      return;
+    }
+
     try {
       setLoading(true);
       const { error } = await supabase.auth.signUp({
@@ -54,11 +60,9 @@ export default function RegisterPage() {
         type: "success",
         text: "We sent you a verification email. Please check your inbox.",
       });
-
-      // (opcional) después de unos segundos, invitar al login
-      // setTimeout(() => router.push("/auth/login"), 2500);
-    } catch (err: any) {
-      setMsg({ type: "error", text: err?.message ?? "Registration failed" });
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : "Registration failed";
+      setMsg({ type: "error", text: errorMessage });
     } finally {
       setLoading(false);
     }
@@ -73,8 +77,9 @@ export default function RegisterPage() {
         options: { redirectTo },
       });
       if (error) throw error;
-    } catch (err: any) {
-      setMsg({ type: "error", text: err?.message ?? "Google sign-in failed" });
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : "Google sign-in failed";
+      setMsg({ type: "error", text: errorMessage });
       setLoading(false);
     }
   }
