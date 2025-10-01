@@ -36,7 +36,7 @@ export default function WorkPage() {
         <PageWrapper>
             <section className="relative px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-12 md:py-20">
             <div className="mb-16">
-                <h1 className="font-titles font-extrabold text-[12vw] sm:text-[10vw] md:text-[8vw] leading-[0.8] mb-6">
+                <h1 className="font-titles font-extrabold text-[16vw] sm:text-[14vw] md:text-[14vw] leading-[0.8] mb-6">
                 OUR WORK
                 </h1>
                 <p className="text-xl md:text-2xl font-light max-w-3xl">
