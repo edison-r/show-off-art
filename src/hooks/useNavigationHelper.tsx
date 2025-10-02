@@ -16,10 +16,10 @@ export function useNavigationHelper() {
         sessionStorage.setItem('hasNavigated', 'true');
         
         triggerWipe(() => {
-        router.push(path);
+            router.push(path);
         }, {
-        duration: 1500,
-        ...options
+            duration: 1400,
+            ...options
         });
     };
 

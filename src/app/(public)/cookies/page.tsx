@@ -1,46 +1,9 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
 import Header from "@/app/components/layout/Header";
 import Footer from "@/app/components/layout/Footer";
 
 export default function CookiesPage() {
-    const [analyticsConsent, setAnalyticsConsent] = useState<null | boolean>(null);
-    const [marketingConsent, setMarketingConsent] = useState<null | boolean>(null);
-    const [saved, setSaved] = useState(false);
-    const liveRef = useRef<HTMLParagraphElement>(null);
-
-    useEffect(() => {
-        try {
-        const raw = localStorage.getItem("cookie-consent");
-        if (raw) {
-            const parsed = JSON.parse(raw);
-            setAnalyticsConsent(Boolean(parsed.analytics));
-            setMarketingConsent(Boolean(parsed.marketing));
-        } else {
-            setAnalyticsConsent(false);
-            setMarketingConsent(false);
-        }
-        } catch {
-        setAnalyticsConsent(false);
-        setMarketingConsent(false);
-        }
-    }, []);
-
-    const saveConsent = () => {
-        const payload = {
-        analytics: !!analyticsConsent,
-        marketing: !!marketingConsent,
-        updatedAt: new Date().toISOString(),
-        };
-        localStorage.setItem("cookie-consent", JSON.stringify(payload));
-        setSaved(true);
-        // Limpia el aviso tras unos segundos
-        setTimeout(() => setSaved(false), 2500);
-        // Foco al region live para lectores de pantalla
-        liveRef.current?.focus();
-    };
-
     return (
         <main className="min-h-screen bg-white text-black">
         <Header />
@@ -110,66 +73,6 @@ export default function CookiesPage() {
                     </tr>
                 </tbody>
                 </table>
-            </div>
-
-            {/* Gestor de preferencias */}
-            <div className="not-prose mt-8 rounded-2xl border border-blue-gray/30 p-5 md:p-6 space-y-4 bg-black/5 backdrop-blur">
-                <h3 className="font-semibold">Manage preferences</h3>
-
-
-                <div className="flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-start">
-                {/* Toggle simple con Tailwind puro */}
-                <label className="flex items-center gap-3">
-                    <button
-                    type="button"
-                    onClick={() => setAnalyticsConsent(!analyticsConsent)}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition
-                        ${analyticsConsent ? "bg-blue" : "bg-blue-gray/50"}`}
-                    aria-pressed={!!analyticsConsent}
-                    aria-label="Allow analytics cookies"
-                    >
-                    <span
-                        className={`inline-block h-5 w-5 transform rounded-full bg-white transition
-                        ${analyticsConsent ? "translate-x-5" : "translate-x-1"}`}
-                    />
-                    </button>
-                    <span>Allow analytics cookies</span>
-                </label>
-
-                <label className="flex items-center gap-3">
-                    <button
-                    type="button"
-                    onClick={() => setMarketingConsent(!marketingConsent)}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition
-                        ${marketingConsent ? "bg-blue" : "bg-blue-gray/50"}`}
-                    aria-pressed={!!marketingConsent}
-                    aria-label="Allow marketing cookies"
-                    >
-                    <span
-                        className={`inline-block h-5 w-5 transform rounded-full bg-white transition
-                        ${marketingConsent ? "translate-x-5" : "translate-x-1"}`}
-                    />
-                    </button>
-                    <span>Allow marketing cookies</span>
-                </label>
-                </div>
-
-                <div className="flex gap-3">
-                <button
-                    onClick={saveConsent}
-                    className="rounded-lg border border-blue-gray px-4 py-2 text-sm hover:bg-blue-gray/50 transition"
-                >
-                    Save preferences
-                </button>
-                <p
-                    ref={liveRef}
-                    tabIndex={-1}
-                    aria-live="polite"
-                    className={`text-sm ${saved ? "opacity-100" : "opacity-0"} transition-opacity`}
-                >
-                    Preferences saved.
-                </p>
-                </div>
             </div>
 
             <h2 className="text-2xl !mt-10 !mb-3">{`3) Managing cookies in your browser`}</h2>

@@ -44,7 +44,7 @@ export function usePageTransition() {
                 exit: 'translateX(100vw)',
                 origin: 'left'
             };
-            default: // 'down'
+            default:
             return { 
                 initial: 'translateY(-100vh)', 
                 cover: 'translateY(0)', 
@@ -56,7 +56,6 @@ export function usePageTransition() {
 
         const { initial, cover, exit, origin } = getCurtainTransforms();
         
-        // cortina principal
         const curtain = document.createElement('div');
         curtain.style.cssText = `
         position: fixed;
@@ -69,7 +68,6 @@ export function usePageTransition() {
         transform-origin: ${origin};
         `;
 
-        // overlay para suavizar la transición
         const overlay = document.createElement('div');
         overlay.style.cssText = `
         position: fixed;
@@ -85,35 +83,29 @@ export function usePageTransition() {
         document.body.appendChild(curtain);
         
         setTimeout(() => {
-        // Fase 1: Mostrar overlay sutil
-        overlay.style.opacity = '1';
-        
-        // Fase 2: Cerrar cortina (después de un pequeño delay)
-        setTimeout(() => {
-            curtain.style.transform = cover;
-        }, 100);
-        
-        // Fase 3: Cambiar página cuando la cortina está completamente cerrada
-        setTimeout(() => {
-            overlay.style.opacity = '0';
-            callback();
-        }, duration * 0.5);
-        
-        // Fase 4: Abrir cortina para revelar nueva página
-        setTimeout(() => {
-            curtain.style.transform = exit;
-        }, duration * 0.65);
-        
-        // Fase 5: Limpiar elementos
-        setTimeout(() => {
-            if (document.body.contains(curtain)) {
-            document.body.removeChild(curtain);
-            }
-            if (document.body.contains(overlay)) {
-            document.body.removeChild(overlay);
-            }
-        }, duration + 200);
-        
+            overlay.style.opacity = '1';
+            
+            setTimeout(() => {
+                curtain.style.transform = cover;
+            }, 150);
+            
+            setTimeout(() => {
+                overlay.style.opacity = '0';
+                callback();
+            }, duration * 0.5);
+            
+            setTimeout(() => {
+                curtain.style.transform = exit;
+            }, duration * 0.65);
+            
+            setTimeout(() => {
+                if (document.body.contains(curtain)) {
+                document.body.removeChild(curtain);
+                }
+                if (document.body.contains(overlay)) {
+                document.body.removeChild(overlay);
+                }
+            }, duration + 200);
         }, delay);
     }, []);
 
