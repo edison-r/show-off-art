@@ -7,7 +7,7 @@ import { Input } from "@/app/components/ui/input";
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-[var(--footer)] text-[var(--footer-gray)]">
+    <main className="min-h-screen bg-[var(--olive)] text-[var(--olive-cream)]">
       <Header />
       
       <PageWrapper>
@@ -113,7 +113,7 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="w-full px-6 py-3 rounded-lg bg-[var(--footer-gray)] text-[var(--footer)] border border-[var(--footer-gray)] hover:bg-[var(--footer-gray)]/50 transition-colors font-semibold"
+                  className="w-full px-6 py-3 rounded-lg bg-[var(--black-cream)] text-[var(--black)] border border-[var(--black-cream)] hover:bg-[var(--black-cream)]/50 transition-colors font-semibold"
                 >
                   Send message
                 </button>

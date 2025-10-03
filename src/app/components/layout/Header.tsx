@@ -73,7 +73,7 @@ export default function Header() {
           <button 
             onClick={() => navigateWithTransition('/contact', { 
               direction: 'down', 
-              color: "var(--footer)",
+              color: "var(--olive)",
               duration: 1200
             })}
             className="hover:underline cursor-pointer"
@@ -83,7 +83,7 @@ export default function Header() {
           <button
             onClick={() => navigateWithTransition('/auth/join', { 
               direction: 'down', 
-              color: "var(--olive)",
+              color: "var(--black)",
               duration: 1200
             })}
             className="ml-12 hover:underline cursor-pointer"
@@ -93,7 +93,7 @@ export default function Header() {
           <button
             onClick={() => navigateWithTransition('/auth/login', { 
               direction: 'down', 
-              color: "var(--olive)",
+              color: "var(--black)",
               duration: 1200
             })}
             className="hover:underline cursor-pointer"

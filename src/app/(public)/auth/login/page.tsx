@@ -100,7 +100,7 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[var(--olive)] text-[var(--olive-cream)]">
+    <main className="min-h-screen bg-[var(--black)] text-[var(--black-cream)]">
       <Header />
 
       <PageWrapper className="relative px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 pb-10 md:pt-20 md:pb-10">
@@ -141,7 +141,7 @@ export default function LoginPage() {
                 <a 
                   onClick={() => navigateWithTransition("/auth/reset-password", { 
                     direction: "down", 
-                    color: "var(--footer)",
+                    color: "var(--black)",
                     duration: 1200
                   })}
                   className="font-mono text-xs cursor-pointer hover:text-black"
@@ -213,7 +213,7 @@ export default function LoginPage() {
               <a 
                 onClick={() => navigateWithTransition("/auth/join", { 
                   direction: "down", 
-                  color: "var(--olive)",
+                  color: "var(--black)",
                   duration: 1200
                 })}
                 className="underline hover:text-black cursor-pointer"

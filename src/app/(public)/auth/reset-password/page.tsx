@@ -57,7 +57,7 @@ export default function ResetPasswordPage() {
     }
 
     return (
-        <main className="min-h-screen bg-[var(--footer)] text-[var(--footer-gray)]">
+        <main className="min-h-screen bg-[var(--black)] text-[var(--black-cream)]">
         <Header />
 
         <section className="relative px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 pb-10 md:pt-20 md:pb-10">

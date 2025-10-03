@@ -38,8 +38,8 @@
   --color-blue: var(--blue);
   --color-blue-gray: var(--blue-gray);
   --color-blue-gray-ghost: var(--blue-gray-ghost);
-  --color-footer: var(--footer);
-  --color-footer-gray: var(--footer-gray);
+  --color-footer: var(--black);
+  --color-footer-gray: var(--black-cream);
   --color-olive: var(--olive);
   --color-olive-cream: var(--olive-cream);
   --color-superblue: var(--superblue);
@@ -57,8 +57,8 @@
   --blue: oklch(0.5738 0.207 262.14);
   --blue-gray: oklch(0.9082 0.0112 123.47);
   --blue-gray-ghost: oklch(0.9082 0.0112 123.47 / 20%);
-  --footer: oklch(0.2134 0 0);         
-  --footer-gray: oklch(0.957 0.0134 97.44);
+  --black: oklch(0.2134 0 0);         
+  --black-cream: oklch(0.957 0.0134 97.44);
   --olive: oklch(0.3237 0.0292 118.82);
   --olive-cream: oklch(0.9549 0.0273 83.54);
   --superblue: oklch(0.4472 0.173755 259.0495);
@@ -72,7 +72,7 @@
   --font-titles: "Chivo Mono", sans-serif;
   --font-mono: "PT Mono", monospace;
 
-  --foreground: var(--footer);        
+  --foreground: var(--black);        
   --border: oklch(0.86 0.005 120);      
   --input: oklch(0.96 0.006 120);
   --ring: oklch(0.70 0.08 260);         
@@ -95,12 +95,12 @@
 
 /* === Dark mode === */
 :root.dark {
-  --foreground: var(--footer-gray);
+  --foreground: var(--black-cream);
   --border: oklch(0.35 0.01 120);
   --input: oklch(0.30 0.01 120);
   --ring: oklch(0.78 0.07 260);
 
-  --color-background: var(--footer);
+  --color-background: var(--black);
 
   --card: oklch(0.24 0.005 120);
   --card-foreground: var(--foreground);
@@ -122,6 +122,6 @@ main[data-theme="color"] {
 }
 
 main[data-theme="footer"] {
-  --bg: var(--footer);
-  --fg: var(--footer-gray);
+  --bg: var(--black);
+  --fg: var(--black-cream);
 }

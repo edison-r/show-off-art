@@ -8,7 +8,7 @@ export default function PortfolioNotFound() {
   const { navigateWithTransition } = useNavigationHelper();
 
   return (
-    <main className="min-h-screen bg-[var(--footer)] text-[var(--footer-gray)]">
+    <main className="min-h-screen bg-[var(--black)] text-[var(--black-cream)]">
       <Header />
 
       <section className="relative px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-20 md:py-32">
@@ -33,7 +33,7 @@ export default function PortfolioNotFound() {
                 color: "var(--blue-gray)",
                 duration: 1200
               })}
-              className="font-mono px-8 py-4 rounded-lg cursor-pointer bg-[var(--footer)] text-[var(--footer-gray)] border border-[var(--footer-gray)] hover:bg-[var(--footer-gray)]/50 hover:text-[var(--footer)] transition-colors font-semibold"
+              className="font-mono px-8 py-4 rounded-lg cursor-pointer bg-[var(--black)] text-[var(--black-cream)] border border-[var(--black-cream)] hover:bg-[var(--black-cream)]/50 hover:text-[var(--black)] transition-colors font-semibold"
             >
               ← Back to home
             </button>
@@ -50,7 +50,7 @@ export default function PortfolioNotFound() {
                   color: "var(--olive)",
                   duration: 1200
                 })}
-                className="font-mono text-sm px-4 py-2 rounded-lg cursor-pointer bg-[var(--footer)] text-[var(--footer-gray)] border border-[var(--footer-gray)] hover:bg-[var(--footer-gray)]/50 hover:text-[var(--footer)] transition-colors font-semibold"
+                className="font-mono text-sm px-4 py-2 rounded-lg cursor-pointer bg-[var(--black)] text-[var(--black-cream)] border border-[var(--black-cream)] hover:bg-[var(--black-cream)]/50 hover:text-[var(--black)] transition-colors font-semibold"
               >
                 Create your portfolio
               </button>
@@ -60,7 +60,7 @@ export default function PortfolioNotFound() {
                   color: "var(--apple)",
                   duration: 1200
                 })}
-                className="font-mono text-sm px-4 py-2 rounded-lg cursor-pointer bg-[var(--footer)] text-[var(--footer-gray)] border border-[var(--footer-gray)] hover:bg-[var(--footer-gray)]/50 hover:text-[var(--footer)] transition-colors font-semibold"
+                className="font-mono text-sm px-4 py-2 rounded-lg cursor-pointer bg-[var(--black)] text-[var(--black-cream)] border border-[var(--black-cream)] hover:bg-[var(--black-cream)]/50 hover:text-[var(--black)] transition-colors font-semibold"
               >
                 Learn more
               </button>
