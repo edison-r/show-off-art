@@ -22,7 +22,6 @@ import type {
   ProjectItem,
 } from '@/types/portfolio';
 import { PORTFOLIO_LIMITS } from '@/types/portfolio';
-import { Projector } from 'lucide-react';
 
 /**
  * Obtener todos los portfolios del usuario autenticado
@@ -37,10 +36,10 @@ export async function getUserPortfolios(): Promise<ActionResponse<Portfolio[]>> 
         const { data: { user }, error: authError } = await supabase.auth.getUser();
         
         if (authError || !user) {
-        return {
-            success: false,
-            error: 'No estás autenticado'
-        };
+            return {
+                success: false,
+                error: 'No estás autenticado'
+            };
         }
         
         // 2. Obtener portfolios de la DB

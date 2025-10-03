@@ -14,8 +14,8 @@ import { Input } from "@app/components/ui/input";
 import { FaGoogle } from "react-icons/fa6";
 
 const SignInSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
+  email: z.email("Invalid email address"),
+  password: z.string().min(8, "Password must be at least 8 characters"),
 });
 type SignInInput = z.infer<typeof SignInSchema>;
 
