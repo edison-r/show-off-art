@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 export async function logout() {
     const supabase = await getSupabaseServer();
     await supabase.auth.signOut();
-    redirect("/auth/login");
+    redirect("/home");
 }
 
 export async function getUserDisplayName() {
@@ -23,7 +23,7 @@ export async function getUserDisplayName() {
     
         const { data: profile, error } = await supabase
             .from('profiles')
-            .select('display_name')
+            .select('username, display_name')
             .eq('id', user.id)
             .maybeSingle()
     
@@ -43,7 +43,10 @@ export async function getUserDisplayName() {
 
         return {
             success: true,
-            data: profile.display_name
+            data: {
+                display_name: profile.display_name,
+                username: profile.username
+            }
         }
     } catch(error: any){
         return{

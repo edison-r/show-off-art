@@ -5,12 +5,12 @@ import Footer from "@app/components/layout/Footer";
 import { useNavigationHelper } from "@/hooks/useNavigationHelper";
 import { PageWrapper } from "@app/components/shared/PageWrapper";
 
-/* const team = [
+const team = [
   { name: "Edison Ronquillo", role: "Founder & Creative Director", image: "/hero1.jpg" },
-  { name: "Maria Garcia", role: "Lead Designer", image: "/hero2.jpg" },
-  { name: "James Chen", role: "Developer", image: "/hero3.jpg" },
-  { name: "Sophie Martin", role: "Product Manager", image: "/hero4.jpg" },
-]; */
+  { name: "Edison Ronquillo", role: "Lead Designer", image: "/hero2.jpg" },
+  { name: "Edison Ronquillo", role: "Developer", image: "/hero3.jpg" },
+  { name: "Edison Ronquillo", role: "Product Manager", image: "/hero4.jpg" },
+];
 
 export default function AboutPage() {
     const { navigateWithTransition } = useNavigationHelper();
@@ -93,7 +93,7 @@ export default function AboutPage() {
                 </div>
             </div>
 
-            {/*<div>
+            <div>
                 <h2 className="font-titles text-3xl md:text-4xl font-bold mb-12">
                 Meet The Team
                 </h2>
@@ -113,7 +113,7 @@ export default function AboutPage() {
                     </div>
                 ))}
                 </div>
-            </div>*/}
+            </div>
 
             <div className="mt-20 text-center">
                 <h2 className="font-titles font-extrabold text-6xl md:text-7xl mb-6">

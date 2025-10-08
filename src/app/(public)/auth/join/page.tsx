@@ -148,7 +148,7 @@ export default function RegisterPage() {
 
             <div className="flex flex-row items-center gap-3 pt-2">
               <input
-                id="accept-terms"
+                id="accept_terms"
                 type="checkbox"
                 className="size-4 accent-[var(--olive-cream)] hover:accent-black"
                 checked={form.accept_terms}
@@ -156,7 +156,7 @@ export default function RegisterPage() {
                 disabled={loading}
                 required
               />
-              <label htmlFor="accept-terms" className="font-mono text-sm">
+              <label htmlFor="accept_terms" className="font-mono text-sm">
                 I agree to the{" "}
                 <a 
                   onClick={() => navigateWithTransition("/terms", { 
@@ -181,7 +181,7 @@ export default function RegisterPage() {
             <button
               type="submit"
               disabled={loading || !form.accept_terms}
-              className="w-full flex items-center justify-center gap-2 cursor-pointer border border-[var(--olive-cream)] rounded-lg py-2 hover:bg-[var(--olive-cream)] hover:text-[var(--olive)] transition"
+              className="w-full flex items-center justify-center gap-2 cursor-pointer border border-[var(--olive-cream)] rounded-lg py-2 hover:bg-[var(--olive-cream)] hover:text-[var(--olive)] transition disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {loading ? "Creating account..." : "Create account"}
             </button>

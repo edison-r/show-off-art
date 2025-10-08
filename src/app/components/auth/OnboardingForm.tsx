@@ -2,7 +2,6 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@app/components/ui/button";
 import { Input } from "@app/components/ui/input";
 import { completeOnboarding } from "@/app/app/actions/onboarding";
 import { RegisterSchema, type RegisterInput } from "@/app/utils/registerSchema";
@@ -139,7 +138,6 @@ export default function OnboardingForm({
             )}
         </div>
 
-        {/* Submit — botón nativo estilo home */}
         <button
             type="submit"
             disabled={

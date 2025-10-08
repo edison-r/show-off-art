@@ -8,9 +8,9 @@ export function useNavigationHelper() {
     const navigateWithTransition = (
         path: string, 
         options?: { 
-        direction?: 'up' | 'down' | 'left' | 'right';
-        color?: string;
-        duration?: number;
+            direction?: 'up' | 'down' | 'left' | 'right';
+            color?: string;
+            duration?: number;
         }
     ) => {
         sessionStorage.setItem('hasNavigated', 'true');

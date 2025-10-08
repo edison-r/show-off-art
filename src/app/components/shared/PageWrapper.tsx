@@ -14,7 +14,7 @@ export function PageWrapper({
 
     useEffect(() => {
         const timer = setTimeout(() => {
-        setDoParallax(true);
+            setDoParallax(true);
         }, 50);
 
         return () => clearTimeout(timer);
