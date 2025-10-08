@@ -3,7 +3,7 @@
 import Header from "@app/components/layout/Header";
 import Footer from "@app/components/layout/Footer";
 import { useNavigationHelper } from "@/hooks/useNavigationHelper";
-import { PageWrapper } from "@app/components/shared/PageWrapper";
+import { PageWrapper } from "@/components/shared/PageWrapper";
 
 const team = [
   { name: "Edison Ronquillo", role: "Founder & Creative Director", image: "/hero1.jpg" },

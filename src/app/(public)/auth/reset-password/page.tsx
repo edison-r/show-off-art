@@ -7,7 +7,7 @@ import { useNavigationHelper } from "@/hooks/useNavigationHelper";
 import Header from "@/app/components/layout/Header";
 import Footer from "@/app/components/layout/Footer";
 import { supabase } from "@/lib/supabase/supabaseClient";
-import { Input } from "@app/components/ui/input";
+import { Input } from "@/components/ui/input";
 
 const ResetSchema = z.object({
   email: z.email("Invalid email address"),

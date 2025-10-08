@@ -3,10 +3,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigationHelper } from "@/hooks/useNavigationHelper";
-import { PageWrapper } from "@app/components/shared/PageWrapper";
+import { PageWrapper } from "@/components/shared/PageWrapper";
 
-import Header from "@app/components/layout/Header";
-import Footer from "@app/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 const projects = [
   { id: 1, title: "Minimal Portfolio", category: "Web Design", image: "/images/tpl1.jpg" },

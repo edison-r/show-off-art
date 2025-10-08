@@ -2,8 +2,8 @@
 
 import Header from "@app/components/layout/Header";
 import Footer from "@app/components/layout/Footer";
-import { PageWrapper } from "@app/components/shared/PageWrapper";
-import { Input } from "@/app/components/ui/input";
+import { PageWrapper } from "@/components/shared/PageWrapper";
+import { Input } from "@/components/ui/input";
 
 export default function ContactPage() {
   return (

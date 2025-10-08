@@ -5,12 +5,12 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { useNavigationHelper } from "@/hooks/useNavigationHelper";
-import { PageWrapper } from "@/app/components/shared/PageWrapper";
+import { PageWrapper } from "@/components/shared/PageWrapper";
 
 import Header from "@/app/components/layout/Header";
 import Footer from "@/app/components/layout/Footer";
 import { supabase } from "@/lib/supabase/supabaseClient";
-import { Input } from "@app/components/ui/input";
+import { Input } from "@/components/ui/input";
 import { FaGoogle } from "react-icons/fa6";
 
 const SignInSchema = z.object({
