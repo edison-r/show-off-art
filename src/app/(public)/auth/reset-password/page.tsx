@@ -21,7 +21,7 @@ export default function ResetPasswordPage() {
     const [loading, setLoading] = useState(false);
     const [msg, setMsg] = useState<null | { type: "success" | "error"; text: string }>(null);
 
-    const redirectTo = `${location.origin}/auth/update-password`;
+    const redirectTo = `${location.origin}/auth/reset-password`;
 
     async function handleReset(e: React.FormEvent) {
         e.preventDefault();

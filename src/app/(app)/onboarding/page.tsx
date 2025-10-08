@@ -15,7 +15,7 @@ export default async function OnboardingPage() {
     .eq("id", user.id)
     .maybeSingle();
 
-  if (profile?.username) redirect("/app/dashboard");
+  if (profile?.username) redirect("/dashboard");
 
   const email = user.email ?? "";
   const emailUsername = email.includes("@") 

@@ -52,7 +52,7 @@ export default function LoginPage() {
         .eq("id", data.user.id)
         .maybeSingle();
 
-      router.replace(profile?.username ? "/app/dashboard" : "/app/onboarding");
+      router.replace(profile?.username ? "/dashboard" : "/onboarding");
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : "Invalid email or password";
       setMsg({ type: "error", text: errorMessage });
