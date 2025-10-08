@@ -48,7 +48,7 @@ export function CreatePortfolioButton({
         setIsOpen(false);
         setTitle('');
         setSlug('');
-        router.push('/app/dashboard');
+        router.push('/dashboard');
         router.refresh();
       } else {
         setError(response.error || 'Error creating portfolio');

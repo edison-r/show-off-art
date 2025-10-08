@@ -200,7 +200,7 @@ export async function createPortfolio(
         
         // 4. Revalidar cache de Next.js
         // Esto hace que la página /dashboard se actualice automáticamente
-        revalidatePath('/app/dashboard');
+        revalidatePath('/dashboard');
         
         return {
             success: true,
@@ -282,8 +282,8 @@ export async function updatePortfolio(
         }
         
         // 4. Revalidar páginas relevantes
-        revalidatePath('/app/dashboard');
-        revalidatePath(`/app/dashboard/${data.slug}`);
+        revalidatePath('/dashboard');
+        revalidatePath(`/dashboard/${data.slug}`);
         if (data.visibility === 'public') {
         // También revalidar la página pública
         const { data: profile } = await supabase
@@ -362,7 +362,7 @@ export async function deletePortfolio(
         }
         
         // 3. Revalidar dashboard
-        revalidatePath('/app/dashboard');
+        revalidatePath('/dashboard');
         
         return {
             success: true
@@ -425,7 +425,7 @@ export async function publishPortfolio(
         }
         
         // 3. Revalidar páginas
-        revalidatePath('/app/dashboard');
+        revalidatePath('/dashboard');
         const { data: profile } = await supabase
             .from('profiles')
             .select('username')
@@ -474,7 +474,7 @@ export async function unpublishPortfolio(portfolioId: string) {
 
     if (error) throw error;
 
-    revalidatePath('/app/dashboard');
+    revalidatePath('/dashboard');
     return { success: true };
   } catch (error: any) {
     return { success: false, error: error.message };

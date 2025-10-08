@@ -74,7 +74,7 @@ export async function completeOnboarding(formData: unknown) {
     }
 
     revalidatePath(`/u/${username}`);
-    redirect("/app/dashboard");
+    redirect("/dashboard");
     
   } catch (error) {
     if (error instanceof Error) {

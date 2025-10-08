@@ -94,7 +94,7 @@ export async function createProject(
         }
         
         // 5. Revalidar páginas
-        revalidatePath(`/app/dashboard/${portfolio.slug}`);
+        revalidatePath(`/dashboard/${portfolio.slug}`);
         
         return {
         success: true,
@@ -160,7 +160,7 @@ export async function updateProject(
     }
     
     // 3. Revalidar
-    revalidatePath(`/app/dashboard/${portfolio.slug}`);
+    revalidatePath(`/dashboard/${portfolio.slug}`);
     
     return {
       success: true,
@@ -224,7 +224,7 @@ export async function deleteProject(
     }
     
     // 3. Revalidar
-    revalidatePath(`/app/dashboard/${portfolio.slug}`);
+    revalidatePath(`/dashboard/${portfolio.slug}`);
     
     return {
       success: true
@@ -280,7 +280,7 @@ export async function reorderProjects(
     }
     
     // 3. Revalidar
-    revalidatePath(`/app/dashboard/${portfolio.slug}`);
+    revalidatePath(`/dashboard/${portfolio.slug}`);
     
     return {
       success: true
@@ -386,7 +386,7 @@ export async function createProjectItem(
     }
     
     // 5. Revalidar
-    revalidatePath(`/app/dashboard/${portfolio.slug}`);
+    revalidatePath(`/dashboard/${portfolio.slug}`);
     
     return {
       success: true,
@@ -459,7 +459,7 @@ export async function deleteProjectItem(
     }
     
     // 4. Revalidar
-    revalidatePath(`/app/dashboard/${item.projects.portfolios.slug}`);
+    revalidatePath(`/dashboard/${item.projects.portfolios.slug}`);
     
     return {
       success: true
@@ -517,7 +517,7 @@ export async function reorderProjectItems(
     }
     
     // 3. Revalidar
-    revalidatePath(`/app/dashboard/${portfolio.slug}`);
+    revalidatePath(`/dashboard/${portfolio.slug}`);
     
     return {
       success: true
@@ -581,7 +581,7 @@ export async function updateProjectItemData(
     }
     
     // 3. Revalidar
-    revalidatePath(`/app/dashboard/${item.projects.portfolios.slug}`);
+    revalidatePath(`/dashboard/${item.projects.portfolios.slug}`);
     
     return {
       success: true,
