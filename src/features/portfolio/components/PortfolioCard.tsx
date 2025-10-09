@@ -1,132 +1,21 @@
 'use client';
 
-import { useState, useTransition } from 'react';
-import { useRouter } from 'next/navigation';
-import { deletePortfolio, publishPortfolio, unpublishPortfolio } from '@/features/portfolio/actions/portfolios';
 import type { Portfolio } from '@/features/portfolio/types/portfolio';
 import Link from 'next/link';
+import { PortfolioCardMenu } from './PortfolioCardMenu';
+import { PortfolioCardBadge } from './PortfolioCardBadge';
 
 interface PortfolioCardProps {
   portfolio: Portfolio;
 }
 
 export function PortfolioCard({ portfolio }: PortfolioCardProps) {
-  const router = useRouter();
-  const [isPending, startTransition] = useTransition();
-  const [showMenu, setShowMenu] = useState(false);
-  
-  const visibilityConfig = {
-    draft: { 
-      text: 'Draft', 
-      color: 'bg-neutral-100 text-neutral-600',
-      icon: '🔒'
-    },
-    unlisted: { 
-      text: 'Unlisted', 
-      color: 'bg-yellow-100 text-yellow-700',
-      icon: '🔗'
-    },
-    public: { 
-      text: 'Public', 
-      color: 'bg-green-100 text-green-700',
-      icon: '🌐'
-    }
-  };
-  
-  const config = visibilityConfig[portfolio.visibility];
-  
-  const handleDelete = () => {
-    if (!confirm('Are you sure you want to delete this portfolio? This action cannot be undone.')) {
-      return;
-    }
-    
-    startTransition(async () => {
-      const response = await deletePortfolio(portfolio.id);
-      if (response.success) {
-        router.refresh();
-      } else {
-        alert(response.error);
-      }
-    });
-  };
-  
-  const handlePublish = () => {
-    startTransition(async () => {
-      const response = await publishPortfolio(portfolio.id);
-      if (response.success) {
-        router.refresh();
-      } else {
-        alert(response.error);
-      }
-    });
-  };
-
-    const handleUnpublish = () => {
-    if (!confirm('This will make your portfolio private. Are you sure?')) {
-        return;
-    }
-    
-    startTransition(async () => {
-        const response = await unpublishPortfolio(portfolio.id);
-        if (response.success) {
-        router.refresh();
-        } else {
-        alert(response.error);
-        }
-    });
-    };
-  
   return (
     <article className="bg-black/30 border border-black rounded-xl p-6 hover:shadow-lg transition-all group relative">
+      {/* Header */}
       <div className="flex items-start justify-between mb-4">
-        <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium ${config.color}`}>
-          <span>{config.icon}</span>
-          {config.text}
-        </span>
-        
-        <div className="relative">
-          <button
-            onClick={() => setShowMenu(!showMenu)}
-            className="p-2 hover:bg-neutral-100 rounded-lg transition-colors"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-            </svg>
-          </button>
-          
-            {showMenu && (
-                <div className="absolute right-0 top-10 bg-white border border-neutral-200 rounded-lg shadow-xl z-10 py-1 min-w-[150px]">
-                    {portfolio.visibility === 'draft' ? (
-                    <>
-                        <button
-                        onClick={handlePublish}
-                        disabled={isPending}
-                        className="w-full px-4 py-2 text-left text-sm hover:bg-neutral-50 disabled:opacity-50"
-                        >
-                        Publish
-                        </button>
-                        <button
-                        onClick={handleDelete}
-                        disabled={isPending}
-                        className="w-full px-4 py-2 text-left text-sm text-red-600 hover:bg-red-50 disabled:opacity-50"
-                        >
-                        Delete
-                        </button>
-                    </>
-                    ) : (
-                    <>
-                        <button
-                        onClick={handleUnpublish}
-                        disabled={isPending}
-                        className="w-full px-4 py-2 text-left text-sm hover:bg-neutral-50 disabled:opacity-50"
-                        >
-                        Unpublish
-                        </button>
-                    </>
-                        )}
-                </div>
-            )}
-        </div>
+        <PortfolioCardBadge visibility={portfolio.visibility} />
+        <PortfolioCardMenu portfolio={portfolio} />
       </div>
       
       {/* Content */}

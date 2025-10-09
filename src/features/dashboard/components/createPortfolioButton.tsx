@@ -1,10 +1,8 @@
 'use client';
 
-import { useState, useTransition } from 'react';
-import { useRouter } from 'next/navigation';
-import { createPortfolio } from '@/features/portfolio/actions/portfolios';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { PortfolioForm } from '../../../features/portfolio/components/PortfolioForm';
+import { CreatePortfolioForm } from '@/features/portfolio/components/CreatePortfolioForm';
 
 interface CreatePortfolioButtonProps {
   disabled?: boolean;
@@ -15,69 +13,7 @@ export function CreatePortfolioButton({
   disabled = false,
   variant = 'default'
 }: CreatePortfolioButtonProps) {
-  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
-  const [title, setTitle] = useState('');
-  const [slug, setSlug] = useState('');
-  const [error, setError] = useState('');
-  const [isPending, startTransition] = useTransition();
-  
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
-    
-    if (!title.trim() || !slug.trim()) {
-      setError('All fields are required');
-      return;
-    }
-    
-    const slugRegex = /^[a-z0-9-]+$/;
-    if (!slugRegex.test(slug)) {
-      setError('Slug can only contain lowercase letters, numbers and hyphens');
-      return;
-    }
-    
-    startTransition(async () => {
-      const response = await createPortfolio({
-        title,
-        slug,
-        visibility: 'draft'
-      });
-      
-      if (response.success) {
-        setIsOpen(false);
-        setTitle('');
-        setSlug('');
-        router.push('/dashboard');
-        router.refresh();
-      } else {
-        setError(response.error || 'Error creating portfolio');
-      }
-    });
-  };
-  
-  const handleTitleChange = (value: string) => {
-    setTitle(value);
-    if (!slug || slug === generateSlug(title)) {
-      setSlug(generateSlug(value));
-    }
-  };
-  
-  const generateSlug = (text: string): string => {
-    return text
-      .toLowerCase()
-      .trim()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-|-$/g, '')
-      .substring(0, 50);
-  };
-  
-  const handleCancel = () => {
-    if (!isPending) {
-      setIsOpen(false);
-      setError('');
-    }
-  };
   
   const buttonClasses = variant === 'large'
     ? 'px-8 py-4 text-lg'
@@ -104,7 +40,7 @@ export function CreatePortfolioButton({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-            onClick={handleCancel}
+            onClick={() => setIsOpen(false)}
           >
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }}
@@ -113,16 +49,9 @@ export function CreatePortfolioButton({
               onClick={(e) => e.stopPropagation()}
               className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 md:p-8"
             >
-              <PortfolioForm
-                title={title}
-                slug={slug}
-                error={error}
-                isPending={isPending}
-                onTitleChange={handleTitleChange}
-                onSlugChange={setSlug}
-                onSubmit={handleSubmit}
-                onCancel={handleCancel}
-                mode="create"
+              <CreatePortfolioForm
+                onSuccess={() => setIsOpen(false)}
+                onCancel={() => setIsOpen(false)}
               />
             </motion.div>
           </motion.div>

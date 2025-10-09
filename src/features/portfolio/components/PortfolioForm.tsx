@@ -48,7 +48,7 @@ export function PortfolioForm({
       <form onSubmit={onSubmit} className="space-y-4">
         {/* Title Field */}
         <div className="space-y-2">
-          <label htmlFor="title" className="text-sm font-medium block">
+          <label htmlFor="title" className="text-sm font-mono font-bold block">
             Portfolio Title
           </label>
           <input
@@ -65,12 +65,12 @@ export function PortfolioForm({
         
         {/* Slug Field */}
         <div className="space-y-2">
-          <label htmlFor="slug" className="text-sm font-medium block">
+          <label htmlFor="slug" className="text-sm font-mono font-bold block">
             URL Slug
           </label>
           <div className="flex items-center gap-2 mb-2 font-mono text-sm text-neutral-500">
             <span>show-off.art/u/username/</span>
-            <span className="font-semibold text-blue">
+            <span className="font-semibold text-[var(--blue)]">
               {slug || 'slug'}
             </span>
           </div>
@@ -110,7 +110,7 @@ export function PortfolioForm({
           <button
             type="submit"
             disabled={isPending}
-            className="cursor-pointer flex-1 px-4 py-3 bg-blue text-white rounded-lg font-semibold hover:bg-blue/90 disabled:opacity-50 transition-colors"
+            className="cursor-pointer flex-1 px-4 py-3 bg-[var(--blue)] text-white rounded-lg font-semibold hover:bg-blue/90 disabled:opacity-50 transition-colors"
           >
             {isPending ? (isCreateMode ? 'Creating...' : 'Saving...') : (isCreateMode ? 'Create' : 'Save')}
           </button>
