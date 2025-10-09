@@ -39,7 +39,7 @@ export function EditorHeader({
             </div>
 
             <Link
-            href={`/app/preview/${portfolioSlug}`}
+            href={`/preview/${portfolioSlug}`}
             className="text-[var(--blue)] px-4 py-2 border border-[var(--blue)] rounded-lg font-medium hover:bg-neutral-50 hover:text-black hover:border-black transition-colors inline-flex items-center gap-2"
             >
             Vista Previa
