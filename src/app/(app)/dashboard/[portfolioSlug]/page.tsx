@@ -32,11 +32,11 @@ export default async function DashboardPortfolioPage({
     // 4. Renderizar
     return (
         <>
-        <HeaderServer />
         <main className="min-h-screen bg-[var(--blue-gray)]">
+        <HeaderServer />
             <PortfolioEditor 
-            portfolio={data.portfolio}
-            projects={data.projects}
+                portfolio={data.portfolio}
+                projects={data.projects}
             />
         </main>
         </>

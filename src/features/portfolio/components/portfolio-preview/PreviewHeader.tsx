@@ -12,7 +12,7 @@ export function PreviewHeader({ portfolioSlug }: PreviewHeaderProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex items-center justify-between">
             <Link 
-                href={`/app/dashboard/${portfolioSlug}`}
+                href={`/dashboard/${portfolioSlug}`}
                 className="text-sm font-medium text-neutral-600 hover:text-neutral-900 inline-flex items-center gap-2"
             >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

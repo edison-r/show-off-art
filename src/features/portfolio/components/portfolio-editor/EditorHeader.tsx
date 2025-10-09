@@ -22,7 +22,7 @@ export function EditorHeader({
         <div className="flex items-center justify-between mb-4">
             <div>
             <Link 
-                href="/app/dashboard"
+                href="/dashboard"
                 className="font-mono text-sm text-[var(--blue)] hover:text-neutral-900 mb-2 inline-flex items-center gap-2"
             >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

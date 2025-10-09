@@ -21,8 +21,8 @@ export default async function DashboardPage() {
   // 3. Renderizar
   return (
     <>
-      <HeaderServer />
       <main className="min-h-screen bg-[var(--blue-gray)] text-black">
+      <HeaderServer />
         <DashboardHeader portfolioCount={portfolios.length} />
         
         <section className="px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-12 md:py-16">
