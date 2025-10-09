@@ -3,7 +3,7 @@
 import { useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { deleteFromSupabase, saveToSupabase } from '@/lib/database/db';
-import { validatePortfolioDraft, validatePublicPortfolioLimit } from '@/lib/validations';
+import { validatePortfolioDraft, validatePublicPortfolioLimit } from '@/lib/helpers/validations';
 
 /**
  * Hook para manejar acciones de portfolio (delete, publish, unpublish)

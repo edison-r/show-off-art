@@ -4,8 +4,8 @@ import { useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { PortfolioForm } from './PortfolioForm';
 import { saveToSupabase } from '@/lib/database/db';
-import { validateSlugUnique } from '@/lib/validations';
-import { validateSlugFormat } from '@/lib/validations-client';
+import { validateSlugUnique } from '@/lib/helpers/validations';
+import { validateSlugFormat } from '@/lib/helpers/validations-client';
 
 interface CreatePortfolioFormProps {
     onSuccess?: () => void;

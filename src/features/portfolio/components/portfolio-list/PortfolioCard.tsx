@@ -11,7 +11,7 @@ interface PortfolioCardProps {
 
 export function PortfolioCard({ portfolio }: PortfolioCardProps) {
   return (
-    <article className="bg-black/30 border border-black rounded-xl p-6 hover:shadow-lg transition-all group relative">
+    <article className="bg-white border border-black rounded-xl p-6 hover:shadow-lg transition-all group relative">
       {/* Header */}
       <div className="flex items-start justify-between mb-4">
         <PortfolioCardBadge visibility={portfolio.visibility} />
@@ -39,7 +39,7 @@ export function PortfolioCard({ portfolio }: PortfolioCardProps) {
       {/* Actions */}
       <div className="flex gap-2">
         <Link
-          href={`/app/dashboard/${portfolio.slug}`}
+          href={`/dashboard/${portfolio.slug}`}
           className="flex-1 px-4 py-2 bg-blue text-white rounded-lg font-medium hover:bg-blue/90 transition-colors inline-flex items-center justify-center gap-2"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -49,7 +49,7 @@ export function PortfolioCard({ portfolio }: PortfolioCardProps) {
         </Link>
         
         <Link
-          href={`/app/preview/${portfolio.slug}`}
+          href={`/preview/${portfolio.slug}`}
           className="px-4 py-2 border border-neutral-300 rounded-lg font-medium hover:bg-neutral-50 transition-colors inline-flex items-center justify-center gap-2"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

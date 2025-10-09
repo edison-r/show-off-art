@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CreatePortfolioForm } from '@/features/portfolio/components/CreatePortfolioForm';
+import { CreatePortfolioForm } from '@/features/portfolio/components/portfolio-form/CreatePortfolioForm';
 
 interface CreatePortfolioButtonProps {
   disabled?: boolean;

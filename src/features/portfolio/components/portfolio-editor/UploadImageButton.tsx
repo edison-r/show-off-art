@@ -4,7 +4,7 @@ import { useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { uploadToStorage } from '@/lib/database/storage';
 import { saveToSupabase } from '@/lib/database/db';
-import { validateProjectItemLimit } from '@/lib/validations';
+import { validateProjectItemLimit } from '@/lib/helpers/validations';
 import type { ImageItemData } from '@/features/portfolio/types/portfolio';
 
 interface UploadImageButtonProps {
