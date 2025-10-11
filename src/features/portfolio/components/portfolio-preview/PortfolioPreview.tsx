@@ -9,9 +9,10 @@ import type { Portfolio, Project, ProjectItem } from '@/features/portfolio/types
 interface PortfolioPreviewProps {
   portfolio: Portfolio;
   projects: (Project & { items: ProjectItem[] })[];
+  isPublic?: boolean;
 }
 
-export function PortfolioPreview({ portfolio, projects }: PortfolioPreviewProps) {
+export function PortfolioPreview({ portfolio, projects, isPublic = false }: PortfolioPreviewProps) {
   // Extraer tema del portfolio
   const theme = {
     primaryColor: portfolio.template_data?.theme?.primaryColor || '#8b5cf6',
@@ -28,7 +29,11 @@ export function PortfolioPreview({ portfolio, projects }: PortfolioPreviewProps)
       }}
     >
       {/* Header fijo */}
-      <PreviewHeader portfolioSlug={portfolio.slug} />
+      {isPublic === false ? (
+        <PreviewHeader portfolioSlug={portfolio.slug} />
+      ) : (
+        <div></div>
+      )}
 
       {/* Contenido principal */}
       <div className="pt-24 pb-16">
