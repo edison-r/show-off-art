@@ -5,17 +5,17 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { useNavigationHelper } from "@/hooks/useNavigationHelper";
-import { PageWrapper } from "@/app/components/shared/PageWrapper";
+import { PageWrapper } from "@/components/shared/PageWrapper";
 
-import Header from "@/app/components/layout/Header";
-import Footer from "@/app/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 import { supabase } from "@/lib/supabase/supabaseClient";
-import { Input } from "@app/components/ui/input";
+import { Input } from "@/components/ui/input";
 import { FaGoogle } from "react-icons/fa6";
 
 const SignInSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
+  email: z.email("Invalid email address"),
+  password: z.string().min(8, "Password must be at least 8 characters"),
 });
 type SignInInput = z.infer<typeof SignInSchema>;
 
@@ -52,7 +52,7 @@ export default function LoginPage() {
         .eq("id", data.user.id)
         .maybeSingle();
 
-      router.replace(profile?.username ? "/app/dashboard" : "/app/onboarding");
+      router.replace(profile?.username ? "/dashboard" : "/onboarding");
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : "Invalid email or password";
       setMsg({ type: "error", text: errorMessage });
@@ -100,7 +100,7 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[var(--olive)] text-[var(--olive-cream)]">
+    <main className="min-h-screen bg-[var(--black)] text-[var(--black-cream)]">
       <Header />
 
       <PageWrapper className="relative px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 pb-10 md:pt-20 md:pb-10">
@@ -141,7 +141,7 @@ export default function LoginPage() {
                 <a 
                   onClick={() => navigateWithTransition("/auth/reset-password", { 
                     direction: "down", 
-                    color: "var(--footer)",
+                    color: "var(--black)",
                     duration: 1200
                   })}
                   className="font-mono text-xs cursor-pointer hover:text-black"
@@ -213,7 +213,7 @@ export default function LoginPage() {
               <a 
                 onClick={() => navigateWithTransition("/auth/join", { 
                   direction: "down", 
-                  color: "var(--olive)",
+                  color: "var(--black)",
                   duration: 1200
                 })}
                 className="underline hover:text-black cursor-pointer"

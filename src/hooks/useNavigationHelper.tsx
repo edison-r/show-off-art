@@ -8,18 +8,18 @@ export function useNavigationHelper() {
     const navigateWithTransition = (
         path: string, 
         options?: { 
-        direction?: 'up' | 'down' | 'left' | 'right';
-        color?: string;
-        duration?: number;
+            direction?: 'up' | 'down' | 'left' | 'right';
+            color?: string;
+            duration?: number;
         }
     ) => {
         sessionStorage.setItem('hasNavigated', 'true');
         
         triggerWipe(() => {
-        router.push(path);
+            router.push(path);
         }, {
-        duration: 1500,
-        ...options
+            duration: 1400,
+            ...options
         });
     };
 

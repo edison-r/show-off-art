@@ -4,10 +4,10 @@ import { useState } from "react";
 import { z } from "zod";
 import { useNavigationHelper } from "@/hooks/useNavigationHelper";
 
-import Header from "@/app/components/layout/Header";
-import Footer from "@/app/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 import { supabase } from "@/lib/supabase/supabaseClient";
-import { Input } from "@app/components/ui/input";
+import { Input } from "@/components/ui/input";
 
 const ResetSchema = z.object({
   email: z.email("Invalid email address"),
@@ -21,7 +21,7 @@ export default function ResetPasswordPage() {
     const [loading, setLoading] = useState(false);
     const [msg, setMsg] = useState<null | { type: "success" | "error"; text: string }>(null);
 
-    const redirectTo = `${location.origin}/auth/update-password`;
+    const redirectTo = `${location.origin}/auth/reset-password`;
 
     async function handleReset(e: React.FormEvent) {
         e.preventDefault();
@@ -57,7 +57,7 @@ export default function ResetPasswordPage() {
     }
 
     return (
-        <main className="min-h-screen bg-[var(--footer)] text-[var(--footer-gray)]">
+        <main className="min-h-screen bg-[var(--black)] text-[var(--black-cream)]">
         <Header />
 
         <section className="relative px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 pb-10 md:pt-20 md:pb-10">

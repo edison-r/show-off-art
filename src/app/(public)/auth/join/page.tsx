@@ -3,12 +3,12 @@
 import { useState } from "react";
 import { z } from "zod";
 import { useNavigationHelper } from "@/hooks/useNavigationHelper";
-import { PageWrapper } from "@/app/components/shared/PageWrapper";
+import { PageWrapper } from "@/components/shared/PageWrapper";
 
-import Header from "@/app/components/layout/Header";
-import Footer from "@/app/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 import { supabase } from "@/lib/supabase/supabaseClient";
-import { Input } from "@app/components/ui/input";
+import { Input } from "@/components/ui/input";
 import { FaGoogle } from "react-icons/fa6";
 
 const RegisterSchema = z.object({
@@ -87,7 +87,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[var(--olive)] text-[var(--olive-cream)]">
+    <main className="min-h-screen bg-[var(--black)] text-[var(--black-cream)]">
       <Header />
       <PageWrapper className="relative px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 md:pt-20 md:pb-10">
         <h1 className="relative z-10 font-titles font-extrabold text-[10vw] sm:text-[8vw] md:text-[7vw] lg:text-[8vw] leading-[0.8] select-none">
@@ -148,7 +148,7 @@ export default function RegisterPage() {
 
             <div className="flex flex-row items-center gap-3 pt-2">
               <input
-                id="accept-terms"
+                id="accept_terms"
                 type="checkbox"
                 className="size-4 accent-[var(--olive-cream)] hover:accent-black"
                 checked={form.accept_terms}
@@ -156,7 +156,7 @@ export default function RegisterPage() {
                 disabled={loading}
                 required
               />
-              <label htmlFor="accept-terms" className="font-mono text-sm">
+              <label htmlFor="accept_terms" className="font-mono text-sm">
                 I agree to the{" "}
                 <a 
                   onClick={() => navigateWithTransition("/terms", { 
@@ -181,7 +181,7 @@ export default function RegisterPage() {
             <button
               type="submit"
               disabled={loading || !form.accept_terms}
-              className="w-full flex items-center justify-center gap-2 cursor-pointer border border-[var(--olive-cream)] rounded-lg py-2 hover:bg-[var(--olive-cream)] hover:text-[var(--olive)] transition"
+              className="w-full flex items-center justify-center gap-2 cursor-pointer border border-[var(--olive-cream)] rounded-lg py-2 hover:bg-[var(--olive-cream)] hover:text-[var(--olive)] transition disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {loading ? "Creating account..." : "Create account"}
             </button>
@@ -212,7 +212,7 @@ export default function RegisterPage() {
               <a 
                 onClick={() => navigateWithTransition("/auth/login", { 
                   direction: "down", 
-                  color: "var(--olive)",
+                  color: "var(--black)",
                   duration: 1200
                 })}
                 className="underline hover:text-black cursor-pointer"
