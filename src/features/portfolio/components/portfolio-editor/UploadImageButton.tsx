@@ -153,8 +153,8 @@ export function UploadImageButton({
         disabled={isUploading}
         className={
           variant === 'icon'
-            ? 'p-3 bg-blue text-white rounded-lg hover:bg-blue/90 disabled:opacity-50 transition-colors'
-            : 'px-4 py-2 bg-blue text-white rounded-lg font-medium hover:bg-blue/90 disabled:opacity-50 transition-colors inline-flex items-center gap-2'
+            ? 'p-3 bg-blue text-white cursor-pointer rounded-lg hover:bg-blue/90 disabled:opacity-50 transition-colors'
+            : 'px-4 py-2 bg-blue cursor-pointer text-white rounded-lg font-medium hover:bg-blue/90 disabled:opacity-50 transition-colors inline-flex items-center gap-2'
         }
         aria-label="Subir imagen"
       >

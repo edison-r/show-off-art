@@ -170,3 +170,76 @@ export async function getUserPortfolios(
         return [];
     }
 }
+
+/**
+ * Obtener portfolio público por username y slug
+ * Solo devuelve portfolios con visibility = 'public'
+ * NO requiere autenticación
+ */
+export async function getPublicPortfolio(
+    username: string,
+    slug: string
+): Promise<PortfolioData | null> {
+    try {
+        const supabase = await getSupabaseServer();
+
+        // 1. Buscar usuario por username
+        const { data: profile } = await getFromSupabase('profiles', {
+        username: username
+        }, {
+        single: true,
+        select: 'id'
+        });
+
+        if (!profile) return null;
+
+        // 2. Buscar portfolio público del usuario
+        const portfolioResult = await getFromSupabase<Portfolio>('portfolios', {
+        slug: slug,
+        owner_id: profile.id,
+        visibility: 'public' // Solo portfolios públicos
+        }, {
+        single: true
+        });
+
+        if (!portfolioResult.success || !portfolioResult.data) {
+        return null;
+        }
+
+        const portfolio = portfolioResult.data;
+
+        // 3. Obtener proyectos
+        const projectsResult = await getFromSupabase<Project[]>('projects', {
+        portfolio_id: portfolio.id
+        }, {
+        orderBy: { column: 'position', ascending: true }
+        });
+
+        const projects = projectsResult.data || [];
+
+        // 4. Obtener items de cada proyecto
+        const projectsWithItems = await Promise.all(
+        projects.map(async (project) => {
+            const itemsResult = await getFromSupabase<ProjectItem[]>('project_items', {
+            project_id: project.id
+            }, {
+            orderBy: { column: 'position', ascending: true }
+            });
+
+            return {
+            ...project,
+            items: itemsResult.data || []
+            };
+        })
+        );
+
+        return {
+        portfolio,
+        projects: projectsWithItems
+        };
+
+    } catch (error) {
+        console.error('Error in getPublicPortfolio:', error);
+        return null;
+    }
+}

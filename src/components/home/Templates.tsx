@@ -5,10 +5,10 @@ import Image from "next/image";
 import { useNavigationHelper } from "@/hooks/useNavigationHelper";
 
 const templates = [
-  { id: 1, src: "tpl1.jpg", title: "Modern Portfolio", description: "Clean, flexible, and fast to customize." },
-  { id: 2, src: "tpl2.jpg", title: "Creative Studio", description: "Bold design for creative professionals." },
-  { id: 3, src: "tpl3.jpg", title: "Minimal Agency", description: "Elegant and sophisticated layout." },
-  { id: 4, src: "tpl4.jpg", title: "Brand Showcase", description: "Perfect for showcasing your brand." },
+  { id: 1, src: "images/tpl1.jpg", title: "Modern Portfolio", description: "Clean, flexible, and fast to customize." },
+  { id: 2, src: "images/tpl2.jpg", title: "Creative Studio", description: "Bold design for creative professionals." },
+  { id: 3, src: "images/tpl3.jpg", title: "Minimal Agency", description: "Elegant and sophisticated layout." },
+  { id: 4, src: "images/tpl4.jpg", title: "Brand Showcase", description: "Perfect for showcasing your brand." },
 ];
 
 const Templates = forwardRef<HTMLElement>(function Templates(_, ref) {

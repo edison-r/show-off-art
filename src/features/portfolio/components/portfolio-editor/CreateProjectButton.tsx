@@ -89,8 +89,8 @@ export function CreateProjectButton({
         onClick={() => setShowForm(true)}
         className={
           variant === 'large'
-            ? 'px-8 py-4 bg-blue text-white rounded-xl font-semibold text-lg hover:bg-blue/90 transition-all shadow-lg hover:shadow-xl inline-flex items-center gap-2'
-            : 'px-4 py-2 bg-blue text-white rounded-lg font-medium hover:bg-blue/90 transition-colors inline-flex items-center gap-2'
+            ? 'px-8 py-4 bg-blue cursor-pointer text-white rounded-xl font-semibold text-lg hover:bg-blue/90 transition-all shadow-lg hover:shadow-xl inline-flex items-center gap-2'
+            : 'px-4 py-2 bg-blue cursor-pointer text-white rounded-lg font-medium hover:bg-blue/90 transition-colors inline-flex items-center gap-2'
         }
       >
         Crear Proyecto
@@ -102,7 +102,7 @@ export function CreateProjectButton({
   return (
     <div className="flex-5 bg-white border border-neutral-200 rounded-xl p-6 shadow-lg">
       {/* Header del formulario */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex cursor-pointer items-center justify-between mb-6">
         <h3 className="font-titles text-xl font-bold">
           Nuevo Proyecto
         </h3>
@@ -203,7 +203,7 @@ export function CreateProjectButton({
           <button
             type="submit"
             disabled={isPending || !title.trim()}
-            className="flex-1 px-4 py-3 bg-blue text-white rounded-lg font-semibold hover:bg-blue/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors inline-flex items-center justify-center gap-2"
+            className="flex-1 px-4 py-3 bg-blue text-white rounded-lg font-semibold cursor-pointer hover:bg-blue/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors inline-flex items-center justify-center gap-2"
           >
             {isPending ? (
               <>
