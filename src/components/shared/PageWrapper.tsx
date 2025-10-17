@@ -1,38 +1,55 @@
+"use client";
+
 import { motion } from "framer-motion";
-import { ReactNode, useState, useEffect } from "react";
+import { ReactNode } from "react";
 
 type PageWrapperProps = {
-    children: ReactNode;
-    className?: string;
+  children: ReactNode;
+  className?: string;
+  enableAnimation?: boolean; // Permitir deshabilitar animación
+  animationDelay?: number; // Delay antes de animar (en segundos)
 };
 
-export function PageWrapper({ 
-  children, 
-  className = "", 
+const INITIAL_OFFSET = -50; // Offset inicial en píxeles
+const ANIMATION_DURATION = 1.2; // Duración en segundos
+
+/**
+ * Wrapper para páginas con animación de entrada suave
+ * 
+ * CÓMO FUNCIONA:
+ * - La página inicia ligeramente arriba (y: -50px)
+ * - Se anima hacia su posición normal (y: 0)
+ * - Usa easing suave para sensación profesional
+ * 
+ * USO:
+ * <PageWrapper>
+ *   <Header />
+ *   <Content />
+ * </PageWrapper>
+ */
+export function PageWrapper({
+  children,
+  className = "",
+  enableAnimation = true,
+  animationDelay = 0.05,
 }: PageWrapperProps) {
-    const [doParallax, setDoParallax] = useState(false);
+  // Si la animación está deshabilitada, renderizar sin motion
+  if (!enableAnimation) {
+    return <div className={className}>{children}</div>;
+  }
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setDoParallax(true);
-        }, 50);
-
-        return () => clearTimeout(timer);
-    }, []);
-
-    return (
-        <motion.div
-            className={`min-h-screen transform-gpu ${className}`}
-            initial={{ y: -50 }} 
-            animate={{ y: doParallax ? 0 : -50 }}
-            transition={{ 
-                duration: 1.2, 
-                ease: [0.22, 1, 0.36, 1],
-                delay: 0
-            }}
-            >
-            {children}
-        </motion.div>
-    );
+  return (
+    <motion.div
+      className={`min-h-screen transform-gpu ${className}`}
+      initial={{ y: INITIAL_OFFSET, opacity: 0.8 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{
+        duration: ANIMATION_DURATION,
+        ease: [0.22, 1, 0.36, 1],
+        delay: animationDelay,
+      }}
+    >
+      {children}
+    </motion.div>
+  );
 }
-
