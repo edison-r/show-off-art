@@ -8,7 +8,7 @@ This is my final project, built to explore how design systems, authentication, a
 
 ## 🖼️ Preview
 
-[![Demo Screenshot](./demo_archives/dashboard_preview.jpg)]()
+[![Demo Screenshot](./demo_archives/show-off_preview.jpg)]()
 
 ---
 

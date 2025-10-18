@@ -1,4 +1,4 @@
-import { CreatePortfolioButton } from './createPortfolioButton'
+import { CreatePortfolioButton } from './CreatePortfolioButton'
 
 interface DashboardHeaderProps {
     portfolioCount: number;
