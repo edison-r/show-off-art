@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useLockBodyScroll } from "@/hooks/useLockBodyScroll"
+import { useLockBodyScroll } from "@/hooks/useLockBodyScroll";
 
 type SplashScreenProps = {
   onFinish: () => void;
@@ -10,114 +10,101 @@ type SplashScreenProps = {
   totalDurationMs?: number;
 };
 
+const WORDS = [
+  "graphic designers",
+  "developers",
+  "photographers",
+  "UX/UI designers",
+  "videographers",
+  "artists",
+];
+
+const SWEEP_PERCENTAGE = 0.2; // 20% del tiempo para el barrido
+
 export default function SplashScreen({
   onFinish,
   onSweepStart,
   totalDurationMs = 6500,
 }: SplashScreenProps) {
-  const words = useMemo(
-    () => [
-      "graphic designers", 
-      "developers",
-      "photographers",
-      "UX/UI designers",
-      "videographers",
-      "artists",
-    ],
-    []
-  );
+  // Calcular duración de cada fase
+  const sweepDuration = Math.round(totalDurationMs * SWEEP_PERCENTAGE); // ~1300ms
+  const wordsDuration = totalDurationMs - sweepDuration; // ~5200ms
+  const timePerWord = Math.floor(wordsDuration / WORDS.length); // ~867ms
 
-  // 80% rotación palabras, 20% barrido
-  const sweepPct = 0.2;
-  const sweepDuration = Math.round(totalDurationMs * sweepPct); // ~1300ms
-  const wordsDuration = totalDurationMs - sweepDuration;        // ~5200ms
-  const perWord = Math.max(500, Math.floor(wordsDuration / words.length));
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [isSweeping, setIsSweeping] = useState(false);
+  const hasFinishedRef = useRef(false);
 
-  const [index, setIndex] = useState(0);
-  const [slideOut, setSlideOut] = useState(false);
-  const finishedRef = useRef(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  // Bloquear scroll mientras haya splash
+  // Bloquear scroll del body
   useLockBodyScroll(true);
 
+  // Efecto para rotar palabras
   useEffect(() => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
+    if (isSweeping) return;
 
-    if (slideOut) return;
-
-    if (index >= words.length) {
-      onSweepStart?.();
-      setSlideOut(true);
-      return;
-    }
-
-    if (index === words.length - 1) {
-      timeoutRef.current = setTimeout(() => {
+    // Si llegamos a la última palabra, esperar un poco más y empezar barrido
+    if (currentWordIndex === WORDS.length - 1) {
+      const timer = setTimeout(() => {
         onSweepStart?.();
-        setSlideOut(true);
-      }, perWord + 1000);
-      return;
+        setIsSweeping(true);
+      }, timePerWord + 1000); // Extra tiempo en la última palabra
+
+      return () => clearTimeout(timer);
     }
 
-    timeoutRef.current = setTimeout(() => {
-      setIndex((i) => i + 1);
-    }, perWord);
+    // Pasar a la siguiente palabra
+    const timer = setTimeout(() => {
+      setCurrentWordIndex(prev => prev + 1);
+    }, timePerWord);
 
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-    };
-  }, [index, slideOut, perWord, words.length, onSweepStart]);
-
-  useEffect(() => {
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-    };
-  }, []);
+    return () => clearTimeout(timer);
+  }, [currentWordIndex, isSweeping, timePerWord, onSweepStart]);
 
   return (
     <motion.div
       aria-hidden="true"
       initial={{ y: 0 }}
-      animate={{ y: slideOut ? "100vh" : "0vh" }}
-      transition={{ duration: sweepDuration / 1000, ease: [0.22, 1, 0.36, 1] }}
+      animate={{ y: isSweeping ? "100vh" : 0 }}
+      transition={{
+        duration: sweepDuration / 1000,
+        ease: [0.22, 1, 0.36, 1], // easeOutQuart
+      }}
       onAnimationComplete={() => {
-        if (slideOut && !finishedRef.current) {
-          finishedRef.current = true;
+        if (isSweeping && !hasFinishedRef.current) {
+          hasFinishedRef.current = true;
           onFinish();
         }
       }}
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-blue-gray"
-      style={{ willChange: "transform" }}
     >
-      <div className="relative z-40 px-6 text-center text-blue">
-        <div className="z-40 text-2xl md:text-4xl font-medium tracking-tight leading-tight">
+      <div className="relative text-center text-blue px-6">
+        <h1 className="text-2xl md:text-4xl font-medium tracking-tight leading-tight">
           <span className="font-bold">
             designed <span className="font-light">by </span>artists,
           </span>
           <br />
-          <span className="font-light">for&nbsp;</span><br />
+          <span className="font-light">for&nbsp;</span>
+          <br />
+          
+          {/* Contenedor de palabras animadas */}
           <span className="font-bold inline-block overflow-hidden align-baseline min-w-[8ch]">
             <AnimatePresence mode="wait">
               <motion.span
-                key={index}
+                key={currentWordIndex}
                 initial={{ y: "100%", opacity: 0 }}
-                animate={{ y: "0%", opacity: 1 }}
+                animate={{ y: 0, opacity: 1 }}
                 exit={{ y: "-100%", opacity: 0 }}
-                transition={{ duration: 0.45, ease: [0.2, 0.8, 0.2, 1] }}
+                transition={{
+                  duration: 0.45,
+                  ease: [0.2, 0.8, 0.2, 1], // easeInOutCubic
+                }}
                 className="inline-block"
               >
-                {words[index] || words[words.length - 1]}
+                {WORDS[currentWordIndex]}
               </motion.span>
             </AnimatePresence>
           </span>
-        </div>
+        </h1>
       </div>
     </motion.div>
   );
