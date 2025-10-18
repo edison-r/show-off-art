@@ -19,8 +19,9 @@ const mono = PT_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "show-off.art",
+  title: "show-off",
   description: "created by artist, for artist",
+  icons: "/favicon.png"
 };
 
 export default function RootLayout({
