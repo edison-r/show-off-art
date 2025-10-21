@@ -1,56 +1,13 @@
-// src/lib/validations.ts
 'use server';
-
-/**
- * VALIDACIONES REUTILIZABLES
- * 
- * Con funciones genéricas perdemos validaciones específicas automáticas.
- * Este archivo centraliza todas las validaciones de negocio:
- * - Límites (6 proyectos, 15 items, etc)
- * - Slugs únicos
- * - Permisos
- * - Formato de datos
- * 
- * CUÁNDO USAR:
- * Llama estas funciones ANTES de saveToSupabase() en tus componentes.
- * 
- * EJEMPLO:
- * ```typescript
- * // En tu componente CreateProject
- * const validation = await validateProjectLimit(portfolioId);
- * if (!validation.valid) {
- *   alert(validation.error);
- *   return;
- * }
- * 
- * // Si pasa validación, guardar
- * await saveToSupabase('projects', projectData);
- * ```
- */
 
 import { getSupabaseServer } from '@/lib/supabase/supabaseServer';
 import { PORTFOLIO_LIMITS } from '@/features/portfolio/types/portfolio';
 
-/**
- * Resultado de validación estándar
- */
 interface ValidationResult {
   valid: boolean;
   error?: string;
 }
 
-/**
- * ============================================
- * VALIDACIONES DE LÍMITES
- * ============================================
- */
-
-/**
- * Validar límite de portfolios
- * Máximo: 6 portfolios en draft
- * 
- * CUÁNDO USAR: Antes de crear un portfolio
- */
 export async function validatePortfolioLimit(userId: string): Promise<ValidationResult> {
   try {
     const supabase = await getSupabaseServer();
@@ -77,12 +34,6 @@ export async function validatePortfolioLimit(userId: string): Promise<Validation
   }
 }
 
-/**
- * Validar límite de portfolios públicos
- * Máximo: 3 portfolios públicos
- * 
- * CUÁNDO USAR: Antes de publicar un portfolio
- */
 export async function validatePublicPortfolioLimit(userId: string): Promise<ValidationResult> {
   try {
     const supabase = await getSupabaseServer();
@@ -110,12 +61,6 @@ export async function validatePublicPortfolioLimit(userId: string): Promise<Vali
   }
 }
 
-/**
- * Validar límite de proyectos por portfolio
- * Máximo: 6 proyectos (también enforced en DB con trigger)
- * 
- * CUÁNDO USAR: Antes de crear un proyecto
- */
 export async function validateProjectLimit(portfolioId: string): Promise<ValidationResult> {
   try {
     const supabase = await getSupabaseServer();
@@ -142,12 +87,6 @@ export async function validateProjectLimit(portfolioId: string): Promise<Validat
   }
 }
 
-/**
- * Validar límite de items por proyecto
- * Máximo: 15 items
- * 
- * CUÁNDO USAR: Antes de crear un item (imagen, embed, texto)
- */
 export async function validateProjectItemLimit(projectId: string): Promise<ValidationResult> {
   try {
     const supabase = await getSupabaseServer();
@@ -168,21 +107,6 @@ export async function validateProjectItemLimit(projectId: string): Promise<Valid
   }
 }
 
-
-/**
- * ============================================
- * VALIDACIONES DE UNICIDAD
- * ============================================
- */
-
-/**
- * Validar que el slug sea único globalmente
- * 
- * CUÁNDO USAR: Antes de crear o actualizar un portfolio
- * 
- * @param slug - Slug a validar
- * @param excludeId - ID del portfolio a excluir (para updates)
- */
 export async function validateSlugUnique(
   slug: string,
   excludeId?: string
@@ -195,7 +119,6 @@ export async function validateSlugUnique(
       .select('id')
       .eq('slug', slug);
     
-    // Si estamos editando, excluir el portfolio actual
     if (excludeId) {
       query = query.neq('id', excludeId);
     }
@@ -212,7 +135,6 @@ export async function validateSlugUnique(
     return { valid: true };
     
   } catch (error) {
-    // Si no encuentra nada (error PGRST116), el slug está disponible
     // @ts-ignore
     if (error?.code === 'PGRST116') {
       return { valid: true };
@@ -225,17 +147,6 @@ export async function validateSlugUnique(
   }
 }
 
-/**
- * ============================================
- * VALIDACIONES DE PERMISOS
- * ============================================
- */
-
-/**
- * Validar que el usuario sea dueño del portfolio
- * 
- * CUÁNDO USAR: Antes de modificar o eliminar un portfolio
- */
 export async function validatePortfolioOwnership(
   portfolioId: string,
   userId: string
@@ -273,11 +184,6 @@ export async function validatePortfolioOwnership(
   }
 }
 
-/**
- * Validar que el usuario sea dueño del proyecto (a través del portfolio)
- * 
- * CUÁNDO USAR: Antes de modificar o eliminar un proyecto
- */
 export async function validateProjectOwnership(
   projectId: string,
   userId: string
@@ -319,17 +225,7 @@ export async function validateProjectOwnership(
   }
 }
 
-/**
- * ============================================
- * VALIDACIONES ESPECIALES
- * ============================================
- */
 
-/**
- * Validar que el portfolio esté en draft antes de eliminarlo
- * 
- * CUÁNDO USAR: Antes de eliminar un portfolio
- */
 export async function validatePortfolioDraft(
   portfolioId: string
 ): Promise<ValidationResult> {

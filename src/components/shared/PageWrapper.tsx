@@ -6,34 +6,19 @@ import { ReactNode } from "react";
 type PageWrapperProps = {
   children: ReactNode;
   className?: string;
-  enableAnimation?: boolean; // Permitir deshabilitar animación
-  animationDelay?: number; // Delay antes de animar (en segundos)
+  enableAnimation?: boolean;
+  animationDelay?: number;
 };
 
-const INITIAL_OFFSET = -50; // Offset inicial en píxeles
-const ANIMATION_DURATION = 1.2; // Duración en segundos
+const INITIAL_OFFSET = -50;
+const ANIMATION_DURATION = 1.2;
 
-/**
- * Wrapper para páginas con animación de entrada suave
- * 
- * CÓMO FUNCIONA:
- * - La página inicia ligeramente arriba (y: -50px)
- * - Se anima hacia su posición normal (y: 0)
- * - Usa easing suave para sensación profesional
- * 
- * USO:
- * <PageWrapper>
- *   <Header />
- *   <Content />
- * </PageWrapper>
- */
 export function PageWrapper({
   children,
   className = "",
   enableAnimation = true,
   animationDelay = 0.05,
 }: PageWrapperProps) {
-  // Si la animación está deshabilitada, renderizar sin motion
   if (!enableAnimation) {
     return <div className={className}>{children}</div>;
   }

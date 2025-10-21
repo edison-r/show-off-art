@@ -93,7 +93,7 @@ export default function AboutPage() {
                 </div>
             </div>
 
-            <div>
+            {/*<div>
                 <h2 className="font-titles text-3xl md:text-4xl font-bold mb-12">
                 Meet The Team
                 </h2>
@@ -132,7 +132,7 @@ export default function AboutPage() {
                 >
                     Get started
                 </button>
-            </div>
+            </div>*/}
             </section>
         </PageWrapper>
 

@@ -47,7 +47,6 @@ export function useAuth() {
         
         if (error) throw error;
 
-        // Verificar si completó onboarding
         const { data: profile } = await supabase
             .from("profiles")
             .select("username")

@@ -29,7 +29,7 @@ export default function ClientsSection(){
           Trusted by creators collaborating with:
         </p>
         <p className="ml-2 sm:ml-4 md:ml-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-tight">
-          Barcelona Activa / IT Academy / 42Barcelona / Adobe / Figma / A24 / VICE Media 
+          Barcelona Activa / IT Academy / Google / Adobe / Figma / A24 / VICE Media 
           / MoMA / Tate Modern / Puma / Off-White / Spotify / Sony Music 
         </p>
       </div>

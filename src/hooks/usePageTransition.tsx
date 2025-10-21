@@ -15,12 +15,9 @@ const DEFAULT_OPTIONS: Required<WipeOptions> = {
     delay: 0,
     color: 'black',
     direction: 'down',
-    easing: 'cubic-bezier(0.22, 1, 0.36, 1)', // easeOutQuart
+    easing: 'cubic-bezier(0.22, 1, 0.36, 1)', 
 };
 
-/**
- * Configuración de transformaciones para cada dirección
- */
 const CURTAIN_TRANSFORMS: Record<WipeDirection, {
     initial: string;
     cover: string;
@@ -53,15 +50,6 @@ const CURTAIN_TRANSFORMS: Record<WipeDirection, {
     },
 };
 
-/**
- * Hook para crear transiciones de página con efecto cortina
- * 
- * FASES:
- * 1. Cortina entra (initial → cover)
- * 2. Callback se ejecuta (router.push)
- * 3. Cortina sale (cover → exit)
- * 4. Cleanup del DOM
- */
 export function usePageTransition() {
     const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
 
@@ -72,7 +60,6 @@ export function usePageTransition() {
         const config = { ...DEFAULT_OPTIONS, ...options };
         const { initial, cover, exit, origin } = CURTAIN_TRANSFORMS[config.direction];
 
-        // Crear cortina
         const curtain = document.createElement('div');
         curtain.style.cssText = `
         position: fixed;
@@ -85,7 +72,6 @@ export function usePageTransition() {
         transform-origin: ${origin};
         `;
 
-        // Overlay sutil (opcional)
         const overlay = document.createElement('div');
         overlay.style.cssText = `
         position: fixed;
@@ -100,30 +86,25 @@ export function usePageTransition() {
         document.body.appendChild(overlay);
         document.body.appendChild(curtain);
 
-        // FASE 1: Iniciar animación después del delay
         const t1 = setTimeout(() => {
         overlay.style.opacity = '1';
 
-        // FASE 2: Cortina cubre pantalla
         const t2 = setTimeout(() => {
             curtain.style.transform = cover;
         }, 150);
         timeoutsRef.current.push(t2);
 
-        // FASE 3: Ejecutar callback (cambiar ruta)
         const t3 = setTimeout(() => {
             overlay.style.opacity = '0';
             callback();
         }, config.duration * 0.5);
         timeoutsRef.current.push(t3);
 
-        // FASE 4: Cortina sale
         const t4 = setTimeout(() => {
             curtain.style.transform = exit;
         }, config.duration * 0.65);
         timeoutsRef.current.push(t4);
 
-        // FASE 5: Cleanup del DOM
         const t5 = setTimeout(() => {
             curtain.remove();
             overlay.remove();
@@ -135,7 +116,6 @@ export function usePageTransition() {
 
     }, []);
 
-    // Cleanup de timeouts al desmontar
     const cleanup = useCallback(() => {
         timeoutsRef.current.forEach(clearTimeout);
         timeoutsRef.current = [];

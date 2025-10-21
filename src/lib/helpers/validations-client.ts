@@ -1,17 +1,3 @@
-/**
- * ============================================
- * VALIDACIONES DE FORMATO
- * ============================================
- */
-
-/**
- * Validar formato de slug
- * Solo letras minúsculas, números y guiones
- * No puede empezar ni terminar con guión
- * 
- * CUÁNDO USAR: En el cliente, antes de enviar el form
- */
-
 interface ValidationResult {
   valid: boolean;
   error?: string;
@@ -41,7 +27,6 @@ export function validateSlugFormat(slug: string): ValidationResult {
     };
   }
   
-  // Slugs reservados (rutas del sistema)
   const reserved = [
     'admin', 'dashboard', 'app', 'auth', 'api', 'about', 'contact',
     'terms', 'privacy', 'cookies', 'work', 'home', 'pricing', 'blog',

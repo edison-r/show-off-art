@@ -19,14 +19,13 @@ const WORDS = [
   "artists",
 ];
 
-const SWEEP_PERCENTAGE = 0.2; // 20% del tiempo para el barrido
+const SWEEP_PERCENTAGE = 0.2;
 
 export default function SplashScreen({
   onFinish,
   onSweepStart,
   totalDurationMs = 6500,
 }: SplashScreenProps) {
-  // Calcular duración de cada fase
   const sweepDuration = Math.round(totalDurationMs * SWEEP_PERCENTAGE); // ~1300ms
   const wordsDuration = totalDurationMs - sweepDuration; // ~5200ms
   const timePerWord = Math.floor(wordsDuration / WORDS.length); // ~867ms
@@ -35,24 +34,20 @@ export default function SplashScreen({
   const [isSweeping, setIsSweeping] = useState(false);
   const hasFinishedRef = useRef(false);
 
-  // Bloquear scroll del body
   useLockBodyScroll(true);
 
-  // Efecto para rotar palabras
   useEffect(() => {
     if (isSweeping) return;
 
-    // Si llegamos a la última palabra, esperar un poco más y empezar barrido
     if (currentWordIndex === WORDS.length - 1) {
       const timer = setTimeout(() => {
         onSweepStart?.();
         setIsSweeping(true);
-      }, timePerWord + 1000); // Extra tiempo en la última palabra
+      }, timePerWord + 1000);
 
       return () => clearTimeout(timer);
     }
 
-    // Pasar a la siguiente palabra
     const timer = setTimeout(() => {
       setCurrentWordIndex(prev => prev + 1);
     }, timePerWord);
@@ -67,7 +62,7 @@ export default function SplashScreen({
       animate={{ y: isSweeping ? "100vh" : 0 }}
       transition={{
         duration: sweepDuration / 1000,
-        ease: [0.22, 1, 0.36, 1], // easeOutQuart
+        ease: [0.22, 1, 0.36, 1],
       }}
       onAnimationComplete={() => {
         if (isSweeping && !hasFinishedRef.current) {
@@ -86,7 +81,6 @@ export default function SplashScreen({
           <span className="font-light">for&nbsp;</span>
           <br />
           
-          {/* Contenedor de palabras animadas */}
           <span className="font-bold inline-block overflow-hidden align-baseline min-w-[8ch]">
             <AnimatePresence mode="wait">
               <motion.span
@@ -96,7 +90,7 @@ export default function SplashScreen({
                 exit={{ y: "-100%", opacity: 0 }}
                 transition={{
                   duration: 0.45,
-                  ease: [0.2, 0.8, 0.2, 1], // easeInOutCubic
+                  ease: [0.2, 0.8, 0.2, 1],
                 }}
                 className="inline-block"
               >

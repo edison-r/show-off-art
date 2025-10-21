@@ -173,9 +173,9 @@ export function RegisterForm({
         {/* Botón Google */}
         <button
             type="button"
-            disabled={loading}
+            disabled={loading || !form.accept_terms}
             onClick={onGoogleSubmit}
-            className="w-full flex items-center justify-center gap-2 cursor-pointer border border-[var(--olive-cream)] rounded-lg py-2 hover:bg-[var(--olive-cream)] hover:text-[var(--olive)] transition"
+            className="w-full flex items-center justify-center gap-2 cursor-pointer border border-[var(--olive-cream)] rounded-lg py-2 hover:bg-[var(--olive-cream)] hover:text-[var(--olive)] transition disabled:opacity-60 disabled:cursor-not-allowed"
         >
             Continue with Google
             <FaGoogle />
